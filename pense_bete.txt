@@ -1,0 +1,3 @@
+il faut :
+ une table qui relie un etu à un cursus
+ une table qui relie un etu un cursus et une uv
