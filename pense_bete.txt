@@ -2,4 +2,42 @@ il faut :
  une table qui relie un etu � un cursus
  une table qui relie un etu un cursus et une uv
 
- UN truc
+
+========================= MODIF TEVI 09/06/2017===================
+Stud_form : le js marche pas : même si erreur, l'étudiant est quand même
+entré dans la bdd...
+
+ue_form, ligne 41 à 60 : dans les fonctions genereselect, pourquoi tu met des tableaux en name?
+
+BDD : ma table pour les catégories s'appelle Categorie_UE, si tu peux modifier sur la tienne,
+il me semble que les majuscules sont différentes chez toi... J'ai modifié les programmes pour qu'ils
+marchent avec ma bdd.
+
+Ue_form : quand je rentre plusieurs entrées, j'obtiens une table de la sorte :
+Array
+(
+    [num] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [sem_label] => Array
+        (
+            [0] =>
+            [1] => aaa
+            [2] => dfsdf
+        )
+
+    [sigle] => Array
+        (
+            [0] =>
+            [1] => aaa
+            [2] => ff
+        )
+
+
+ ===> y'a pas moyens de mettre les entrées dès la ligne [0] ? sinon pas grave, c'est du chipotage
+
+
