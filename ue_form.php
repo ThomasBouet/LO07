@@ -1,23 +1,20 @@
 <?php
 session_start();
-include('database.php');
-include('bibliotheque.php');
-include('elmt_formation.php');
+include_once('database.php');
+include_once('bibliotheque.php');
+include_once('elmt_formation.php');
 $resultat = array('A','B','C','D','E','F','ADM','RES','ABS');
 $num = array(1,2,3,4,5,6);
 $r1 ='select IdCat from categorie_ue';
 $result = mysqli_query($database, $r1);
 echo $r1;
-$cat = array();
-while($ligne = mysqli_fetch_array($result)){
-    $cat[] = $ligne[0];
-}
-var_dump($cat);
+
+$cat = selectdata("IdCat","Categorie_UE",$database);
 $affectation = array('TC','BR','TCBR','FCBR');
 $yesno = array('Y','N');
 ?>
 <script>
-    var counter = 1;
+    var counter = 0;
     var limit = 30;
     var original = document.getElementById('dynamicInputHidden');
     function addInput(){

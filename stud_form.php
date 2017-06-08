@@ -16,22 +16,17 @@
                 if(!nom.match(/^\w[^0-9]+$/)){
                     alert("Veuillez entrer un nom sans chiffres et sans carctère spéciaux");
                 }
-                if(!prenom.match(/^\w[^0-9]+$/)); 
+                if(!prenom.match(/^\w[^0-9]+$/));
                     alert("Veuillez entrer un prenom sans chiffres et sans carctère spéciaux");
             }
         </script>
     </head>
 <?php
 session_start();
-include('database.php');
-include('bibliotheque.php');
-include('etudiant.php');
-$r = 'SELECT IdFil FROM filiere';
-$result = mysqli_query($database, $r);
-$filiere= array();
-while($ligne = mysqli_fetch_array($result)){
-    $filiere[] = $ligne[0];
-}
+include_once('database.php');
+include_once('bibliotheque.php');
+include_once ('etudiant.php');
+$filiere = selectdata("Idfil","Filiere",$database);
 $admission = array('TC','BR');
 ?>
 <form method="POST" action="stud_action.php">
