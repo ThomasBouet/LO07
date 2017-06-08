@@ -1,13 +1,8 @@
 <?php
-include 'database.php';
 include 'etudiant.php';
 include 'elmt_formation.php';
+require_once 'database.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 function saveCSV($tab,$nom){
     $filename = "file_csv/".$nom.".csv";
     if(!file_exists($filename)){
@@ -86,6 +81,7 @@ function genereRadio($tab, $name){
     }
     return $line;
 }
+
 
 function selectdata ($select,$table,$database){
     $sql = "SELECT `$select` FROM `$table`";
