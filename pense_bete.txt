@@ -1,3 +1,5 @@
 il faut :
  une table qui relie un etu � un cursus
  une table qui relie un etu un cursus et une uv
+
+ UN truc
