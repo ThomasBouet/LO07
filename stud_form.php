@@ -3,21 +3,28 @@
         <script>
             function verification()
             {
+                var valid = true;
                 var num = document.getElementById('numero').value;
                 var nom = document.getElementById('nom').value;
                 var prenom = document.getElementById('prenom').value;
                 //num = Integer.parseInt(num);
                 if(!(/^\d+$/.test(num))){
                     alert('Veuillez entrer un numéro');
+                    valid = false;
                 }
                 if(num.length != 5){
                     alert('Veuillez entrer un numéro ayant le bon format : 5 chiffres');
+                    valid = false;
                 }
                 if(!nom.match(/^\w[^0-9]+$/)){
                     alert("Veuillez entrer un nom sans chiffres et sans carctère spéciaux");
+                    valid = false;
                 }
-                if(!prenom.match(/^\w[^0-9]+$/));
+                if(!prenom.match(/^\w[^0-9]+$/)) {
                     alert("Veuillez entrer un prenom sans chiffres et sans carctère spéciaux");
+                    valid = false;
+                }
+                return valid;
             }
         </script>
     </head>
@@ -29,7 +36,7 @@ include_once ('etudiant.php');
 $filiere = selectdata("Idfil","Filiere",$database);
 $admission = array('TC','BR');
 ?>
-<form method="POST" action="stud_action.php">
+<form method="POST" action="stud_action.php" onsubmit="return verification();">
          <fieldset>
              Numéro étudiant <input type="text" name="IdEtu" id="numero"> </br>
              Nom <input type="text" name="nom" id="nom"> </br>
@@ -37,7 +44,7 @@ $admission = array('TC','BR');
              Admission <?php echo(genereSelect($admission,'admission','adm'));?> </br>
              Filière <?php echo(genereSelect($filiere,'filiere','filiere'));?> </br>
          </fieldset>
-     <input type="submit" value="Envoyer" onclick="verification();">
+     <input type="submit" value="Envoyer">
 </form>
 <?php
 if(!isset($_POST)){
