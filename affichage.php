@@ -5,6 +5,7 @@
     include 'include/database.php';
     include 'include/rgmt_actuel.php';
     include 'include/rgmt_futur.php';
+    include 'include/elmt_formation.php';
     $id = selectdata("IdEtu","Etudiant",$database);
     $numparcours = array();
     for($i=1; $i<11; $i++){
