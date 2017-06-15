@@ -68,7 +68,7 @@ function genereOption($tab){
 }
 
 function genereSelect($tab,$name,$id){
-    $line = "<br/><select name='$name' id='$id' required>";
+    $line = "<select class='form-control'> name='$name' id='$id' required>";
     $line .= genereOption($tab);
     $line .= '</select>';
     return $line;
