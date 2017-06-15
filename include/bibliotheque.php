@@ -1,7 +1,7 @@
 <?php
-include 'include/etudiant.php';
-include 'include/elmt_formation.php';
-require_once 'include/database.php';
+include 'etudiant.php';
+include 'elmt_formation.php';
+require_once 'database.php';
 
 function saveCSV($tab,$nom){
     $filename = "file_csv/".$nom.".csv";

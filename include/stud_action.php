@@ -1,6 +1,6 @@
 <?php
-    include('include/database.php');
-    include('include/bibliotheque.php');
+    include('database.php');
+    include('bibliotheque.php');
 
     if (isset ($_POST['IdEtu'],$_POST['nom'],$_POST['prenom'],$_POST["admission"],$_POST['filiere'])){
         $IdEtu=$_POST['IdEtu'];
