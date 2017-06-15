@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
 <?php
+$page='cursuscrea';
 include('../layout/header.php');
 include_once('../include/database.php');
 include_once('../include/bibliotheque.php');
@@ -10,26 +9,7 @@ $num = array(1, 2, 3, 4, 5, 6,7,8,9,10,11,12);
 $ues=selectdata('IdUe','Ue',$database);
 $nom = selectdata("IdEtu","Etudiant",$database);
 ?>
-<body>
-    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/">Projet LO07</a>
-        <div class="collapse navbar-collapse" id="navbarExample">
-            <ul class="sidebar-nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="fa fa-fw fa-star"></i> Accueil</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/create"><i class="fa fa-fw fa-wrench"></i> Création d'un cursus</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Visualisation d'un cursus</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
     <div class="content-wrapper py-3">
         <div class="container-fluid">
             <!-- Breadcrumbs -->
@@ -57,7 +37,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                     <div class="card-block">
                         <div id='container'>
                             <div id="dynamicInputHidden" style="display : none;">
-                                <div class="card card-outline-primary mb-3 text-center">
+                                <div class="card card-outline-info mb-3 text-center">
                                     <div class="card-block">
                                         <blockquote class="card-blockquote">
                                             <div class="form-group row">
@@ -102,7 +82,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                             </div>
                         </div>
                         <div id="dynamicInput1">
-                            <div class="card card-outline-primary mb-3 text-center">
+                            <div class="card card-outline-info mb-3 text-center">
                                 <div class="card-block">
                                     <blockquote class="card-blockquote">
                                         <div class="form-group row">
