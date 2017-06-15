@@ -53,7 +53,7 @@ function readCSV($nom){
         foreach ($handle as $line) {
             $line = str_replace("\r","",$line);
             $line = str_replace("\n","",$line);
-             $line = explode(';',$line);
+            $line = explode(';',$line);
             array_push($tableau, $line);
         }
         return($tableau);
