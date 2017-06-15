@@ -96,9 +96,7 @@ and open the template in the editor.
         var_dump($etu);
         var_dump($tab_ue);
         echo "<input type='hidden' value='".$file['name']."' id='hidden'>";
-        /*$handle = fopen("file_csv/".$file['name'],'r');
-			$data = fgetcsv($handle);
-			var_dump($data);*/
+
         ?>
         </pre>
         <input type='button'  value='FERMER' onclick='deleteCSV(); document.location.href="truc.php"; '>

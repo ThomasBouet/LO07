@@ -6,6 +6,7 @@ require_once 'include/database.php';
 require_once 'include/rgmt_actuel.php';
 require_once 'include/rgmt_futur.php';
 require_once 'include/elmt_formation.php';
+require_once 'layout/header.php';
 session_start();
 $id = selectdata("IdEtu", "Etudiant", $database);
 $numparcours = array();
@@ -16,8 +17,8 @@ for ($i = 1; $i < 11; $i++) {
 <head></head>
 <body>
 <form method="post" action="#">
-    Etudiant<?php genereSelect($id, 'idetu', 'idetu'); ?></br>
-    Parcours<?php genereSelect($numparcours, 'parcours', 'parcours'); ?></br>
+    Etudiant<?php echo genereSelect($id, 'idetu', 'idetu'); ?></br>
+    Parcours<?php echo genereSelect($numparcours, 'parcours', 'parcours'); ?></br>
 </form>
 <?php
 /**
@@ -26,36 +27,38 @@ for ($i = 1; $i < 11; $i++) {
  * Date: 15/06/2017
  * Time: 16:21
  */
-$_SESSION["idetu"] = $_POST["idetu"];
-$_SESSION["parcours"] = $_POST["parcours"];
-$tab = recupParours($_POST["idetu"], $_POST["parcours"], $database);
-$CS = $EC = $HT = $ME = $NPML = $SE = $ST = $TM = array();
-foreach ($tab as $value) {
-    switch ($value->getCategorie()) {
-        case 'CS':
-            $CS[] = $value;
-            break;
-        case 'EC':
-            $EC[] = $value;
-            break;
-        case 'HT':
-            $HT[] = $value;
-            break;
-        case 'ME':
-            $ME[] = $value;
-            break;
-        case 'NPML':
-            $NPML[] = $value;
-            break;
-        case 'SE':
-            $SE[] = $value;
-            break;
-        case 'ST':
-            $ST[] = $value;
-            break;
-        case 'TM':
-            $TM[] = $value;
-            break;
+if (!isset($_POST)) {
+    $_SESSION["idetu"] = $_POST["idetu"];
+    $_SESSION["parcours"] = $_POST["parcours"];
+    $tab = recupParours($_POST["idetu"], $_POST["parcours"], $database);
+    $CS = $EC = $HT = $ME = $NPML = $SE = $ST = $TM = array();
+    foreach ($tab as $value) {
+        switch ($value->getCategorie()) {
+            case 'CS':
+                $CS[] = $value;
+                break;
+            case 'EC':
+                $EC[] = $value;
+                break;
+            case 'HT':
+                $HT[] = $value;
+                break;
+            case 'ME':
+                $ME[] = $value;
+                break;
+            case 'NPML':
+                $NPML[] = $value;
+                break;
+            case 'SE':
+                $SE[] = $value;
+                break;
+            case 'ST':
+                $ST[] = $value;
+                break;
+            case 'TM':
+                $TM[] = $value;
+                break;
+        }
     }
 }
 ?>
