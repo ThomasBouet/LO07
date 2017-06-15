@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($res))
 }
 echo("<h1>Supression d'UE dans le cursus numero $cursus</h1>");
 echo("<form method=\"POST\" action=\"cursus_modif_supr.php\">");
-echo(genereSelectMult($resultats,"ue","ue"));
+echo(genereSelectMult($resultats,"ue[]","ue"));
 echo("<input type=\"hidden\" name=\"etu\" value=\"$etu\">
 <input type=\"hidden\" name=\"cursus\" value=" . $cursus . "> ");
 echo("<input type=submit> ");
