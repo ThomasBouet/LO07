@@ -87,6 +87,14 @@ function selectdata ($select,$table,$database){
     return $resultats;
 }
 
+function genereRadio($tab, $name){
+        $line = "</br>";
+        foreach($tab as $value){
+                $line .= "$value<input type='radio' name='$name' value='$value'>";
+            }
+    return $line;
+ }
+
 function ligneTab(){
     echo"<tr>
             <td>
