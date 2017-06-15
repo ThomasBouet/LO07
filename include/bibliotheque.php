@@ -95,10 +95,18 @@ function genereRadio($tab, $name){
     return $line;
  }
 
-function ligneTab(){
+function ligneTab($nom, $tab){
     echo"<tr>
             <td>
-                
-            </td>
-        </tr>";
+                <h1>$nom</h1>
+            </td>";
+    foreach($tab as $value){
+        echo"<td>
+                $value->getSem_label().$value->getSem_seq()</br>
+                $value->getLabel()</br>
+                $value->getResultat()</br>
+                $value->getCredit();
+            </td>";
+    }
+    echo"</tr>";
 }
