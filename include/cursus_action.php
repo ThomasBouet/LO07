@@ -3,15 +3,13 @@ require_once 'database.php';
 require_once 'bibliotheque.php';
 
 
-echo("<pre>");
-print_r($_POST);
-echo("</pre>");
-
 $etu = $_POST["etu"];
+
 $sql="SELECT MAX(IdParcours) FROM ElemForm";
 $resu = mysqli_query($database, $sql);
 $parcourstab = mysqli_fetch_array($resu);
 $parcours= $parcourstab[0]+1;
+
 for ($i = 1; $i < count($_POST["ue"]); $i++) {
     $ue = $_POST["ue"][$i];
     $num = $_POST["num"][$i];
@@ -33,10 +31,10 @@ for ($i = 1; $i < count($_POST["ue"]); $i++) {
 
 
     $requete = "INSERT INTO `ElemForm` VALUES ('$etu','$num','$sem','$ue','$utt','$profil','$credits[0]','$res','$parcours')";
-    var_dump($requete);
+
     $resultat = mysqli_query($database, $requete);
     if ($resultat) {
-        echo("oui");
+        echo("parcours enregistre sur $parcours");
     } else {
         echo("erreur");
         mysqli_error($database);
