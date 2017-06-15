@@ -3,8 +3,8 @@ include("database.php");
 include ("bibliotheque.php");
    /* $etu=$_POST["etu"];
     $cursus=$_POST["cursus"];*/
-   $etu=66666;
-   $cursus=4;
+   $etu=$_POST["etu"];
+   $cursus=$_POST["cursus"];
 
 
 $sql = "SELECT sigle FROM ElemForm WHERE IdEleve = $etu AND IdParcours = $cursus";
