@@ -3,6 +3,7 @@
 <?php
 include('layout/header.php')
 ?>
+<body>
     <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,4 +40,5 @@ include('layout/header.php')
             </div>
         </div>
     </div>
+</body>
 </html>
