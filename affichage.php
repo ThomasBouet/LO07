@@ -6,6 +6,7 @@
     require_once 'include/rgmt_actuel.php';
     require_once 'include/rgmt_futur.php';
     require_once 'include/elmt_formation.php';
+    session_start();
     $id = selectdata("IdEtu","Etudiant",$database);
     $numparcours = array();
     for($i=1; $i<11; $i++){
@@ -25,6 +26,8 @@
     * Date: 15/06/2017
     * Time: 16:21
     */
+    $_SESSION["idetu"] = $_POST["idetu"];
+    $_SESSION["parcours"]  = $_POST["parcours"];
     $tab = recupParours($_POST["idetu"],$_POST["parcours"],$database);
     $CS = $EC = $HT = $ME = $NPML = $SE = $ST = $TM = array();
     foreach($tab as $value){
@@ -67,6 +70,13 @@
                     break;
             }
         }
+        echo "Voulez-vous supprimer ce dossier ?";
+        echo "<form methode='post' action='include/cursus_supr.php'> 
+                <input type=\"hidden\" name=\"etu\" value=".$_SESSION["idetu"].">
+                <input type=\"hidden\" name=\"cursus\" value=".$_SESSION["parcours"]."> 
+                <input type='submit' value='SUPPRIMER'>
+                </form>";
     ?>
+
     </body>
 </html>
