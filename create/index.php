@@ -19,7 +19,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="sidebar-nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="fa fa-fw fa-dashboard"></i> Accueil</a>
+                    <a class="nav-link" href="/"><i class="fa fa-fw fa-star"></i> Accueil</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/create"><i class="fa fa-fw fa-wrench"></i> Création d'un cursus</a>
