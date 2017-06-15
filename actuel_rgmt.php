@@ -1,6 +1,4 @@
 <?php
-//ici je considère que je récupère la liste des ue genre comme avec le action_csv
-include 'bibliotheque.php';
 include 'elmt_formation.php';
 /**
  * Created by PhpStorm.
@@ -20,22 +18,21 @@ function actuel_rgmt($tab)
             if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'FCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'FCBR') {
                 $CSTMfcbr++;
             }
-            if ($value->getCategorie() == 'TM' && $value->getAffectation() == 'BR') {
+            if ($value->getCategorie() == 'TM') {
                 $TMbr++;
             }
-            if ($value->getCategorie() == 'ST' && $value->getAffectation() == 'FCBR') {
+            if ($value->getCategorie() == 'ST') {
                 $STfcbr++;
             }
-            if ($value->getCategorie() == 'ST' && $value->getAffectation() == 'TCBR') {
-                $STtcbr++;
+            if ($value->getCategorie() == 'ST'){                $STtcbr++;
             }
-            if ($value->getCategorie() == 'HT' && $value->getAffectation() == 'BR') {
+            if ($value->getCategorie() == 'HT') {
                 $CTbr++;
             }
-            if ($value->getCategorie() == 'EC' && $value->getAffectation() == 'BR') {
+            if ($value->getCategorie() == 'EC') {
                 $ECbr++;
             }
-            if ($value->getCategorie() == 'ME' && $value->getAffectation() == 'BR') {
+            if ($value->getCategorie() == 'ME') {
                 $MEbr++;
             }
             if ($value->getCategorie == 'CS' && $value->getUtt() || $value->getCategorie == 'TM' && $value->getUtt()) {
