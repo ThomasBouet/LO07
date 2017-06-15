@@ -8,10 +8,10 @@ include 'elmt_formation.php';
  * Date: 11/06/2017
  * Time: 12:13
  */
-function actuel_rgmt($tab)
+function futur_rgmt($tab)
 {
     $SE = $NPML = FALSE;
-    $CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = $UTTCSTM = $final = 0;
+    $CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = $UTTCSTM = $final = $somme = 0;
     foreach ($tab as $value) {
         if ($value === Element) {
             if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'TCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'TCBR') {
@@ -47,6 +47,9 @@ function actuel_rgmt($tab)
             if ($value->getCategorie() == 'NPML') {
                 $NPML = TRUE;
             }
+            if ($value->getAffectation() == 'BR') {
+                $somme = $somme + $value->getCredit();
+            }
         }
     }
     if ($NPML) {
@@ -61,33 +64,33 @@ function actuel_rgmt($tab)
     } else {
         echo "SE non validé </br>";
     }
-    if ($CSTMtcbr >= 54) {
+    if ($CSTMtcbr >= 42) {
         echo "Vous avez validé assez de crédits de TM en TCBR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en TCBR </br>
-        Il vous manque " . (54 - $CSTMtcbr) . " crédits </br>";
+        Il vous manque " . (42 - $CSTMtcbr) . " crédits </br>";
     }
-    if ($CSTMfcbr >= 30) {
+    if ($CSTMfcbr >= 18) {
         echo "Vous avez validé assez de crédits de TM en FCBR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en FCBR </br>
-        Il vous manque " . (30 - $CSTMfcbr) . " crédits </br>";
+        Il vous manque " . (18 - $CSTMfcbr) . " crédits </br>";
     }
-    if ($CSbr >= 30) {
+    if ($CSbr >= 24) {
         echo "Vous avez validé assez de crédits de CS en BR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits CS en BR </br>
-        Il vous en manque " . (30 - $CSbr) . "</br>";
+        Il vous en manque " . (24 - $CSbr) . "</br>";
     }
-    if ($TMbr >= 30) {
+    if ($TMbr >= 24) {
         echo "Vous avez validé assez de crédits de TM en BR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits TM en BR </br>
-        Il vous en manque " . (30 - $TMbr) . "</br>";
+        Il vous en manque " . (24 - $TMbr) . "</br>";
     }
     if ($STtcbr >= 30) {
         echo "Vous avez validé assez de crédits de ST en TCBR </br>";
@@ -138,7 +141,13 @@ function actuel_rgmt($tab)
         echo "Vous n'avez pas validé assez de crédits CS et/ou de TM à l'UTT en BR </br>
         Il vous en manque " . (60 - $UTTCSTM) . "</br>";
     }
-    if ($final == 13) {
+    if ($somme >= 180) {
+        echo "Vous avez validé assez de crédits </br>";
+    } else {
+        echo "Vous n'avez pas validé assez de crédits </br>
+        Il vous en manque " . (180 - $somme) . "</br>";
+    }
+    if ($final == 15) {
         echo "<h1>PROFIL VALIDE</h1> </br>";
     } else {
         echo "<h1>PROFIL REJETE</h1> </br>";
