@@ -53,7 +53,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
 
     }
 </script>
-<form method="POST" action="include/cursus_modif_action.php">
+<form method="POST" action="cursus_modif_action.php">
 
     <div id='container'>
         <div id="dynamicInputHidden" style="display : none;"> </br>
@@ -81,6 +81,9 @@ $nom = selectdata("IdEtu","Etudiant",$database);
         </fieldset>
     </div>
     <input type="button" value="Add another text input" onClick="addInput('dynamicInput');"> </br>
+    <?php
+    echo("<input type=\"hidden\" name=\"etu\" value=\"$etu\">
+    <input type=\"hidden\" name=\"cursus\" value=\"  $cursus \">") ?>
     <input type="submit" value="Envoyer">
 </form>
 

@@ -68,14 +68,14 @@ function genereOption($tab){
 }
 
 function genereSelect($tab,$name,$id){
-    $line = "<select class='form-control'> name='$name' id='$id' required>";
+    $line = "<select class='form-control' name='$name' id='$id' required>";
     $line .= genereOption($tab);
     $line .= '</select>';
     return $line;
 }
 
 function genereSelectMult($tab,$name,$id){
-    $line = "<select multiple class='form-control'> name='$name' id='$id' required>";
+    $line = "<select multiple class='form-control'name='$name' id='$id' required>";
     $line .= genereOption($tab);
     $line .= '</select>';
     return $line;
