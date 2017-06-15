@@ -40,4 +40,5 @@ Array
 
  ===> y'a pas moyens de mettre les entrées dès la ligne [0] ? sinon pas grave, c'est du chipotage
 
-
+phpmyadmin:
+http://web2.pulseheberg.net/phpmyadmin/index.php?db=wq8z6t_tevi&table=Ue&server=1&target=sql.php&token=a749b01d11d7f42dcf239d8ba6261c34
