@@ -74,6 +74,12 @@ function genereSelect($tab,$name,$id){
     return $line;
 }
 
+function genereSelectMult($tab,$name,$id){
+    $line = "<select multiple class='form-control'> name='$name' id='$id' required>";
+    $line .= genereOption($tab);
+    $line .= '</select>';
+    return $line;
+}
 
 
 function selectdata ($select,$table,$database){
