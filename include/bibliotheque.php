@@ -86,3 +86,11 @@ function selectdata ($select,$table,$database){
     }
     return $resultats;
 }
+
+function ligneTab(){
+    echo"<tr>
+            <td>
+                
+            </td>
+        </tr>";
+}
