@@ -30,7 +30,6 @@
     </head>
 <?php
 session_start();
-//lol
 include_once('database.php');
 include_once('bibliotheque.php');
 include_once ('etudiant.php');

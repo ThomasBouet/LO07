@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 02 Juin 2017 à 13:57
+-- Généré le :  Jeu 15 Juin 2017 à 14:43
 -- Version du serveur :  5.6.35-1~dotdeb+7.1
 -- Version de PHP :  5.6.5
 
@@ -75,6 +75,9 @@ INSERT INTO `Categorie_UE` (`IdCat`, `desc`) VALUES
 ('EC', 'expression et communication'),
 ('HT', 'humanité et technologies'),
 ('ME', 'management de l''entreprise'),
+('NPML', 'Bulats anglais'),
+('SE', ''),
+('ST', 'Stage'),
 ('TM', 'technologie et méthodes');
 
 -- --------------------------------------------------------
@@ -112,7 +115,8 @@ CREATE TABLE IF NOT EXISTS `ElemForm` (
   `utt` varchar(1) NOT NULL,
   `profil` varchar(1) NOT NULL,
   `creditobt` int(2) NOT NULL,
-  `resultat` varchar(1) NOT NULL
+  `resultat` varchar(1) NOT NULL,
+  `IdParcours` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,8 +130,7 @@ CREATE TABLE IF NOT EXISTS `Etudiant` (
   `nom` varchar(80) NOT NULL,
   `prenom` varchar(80) NOT NULL,
   `admission` varchar(2) NOT NULL,
-  `filiere` varchar(6) NOT NULL,
-  `sem_admi` varchar(3) NOT NULL
+  `filiere` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -187,6 +190,14 @@ CREATE TABLE IF NOT EXISTS `Ue` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Contenu de la table `Ue`
+--
+
+INSERT INTO `Ue` (`IdUe`, `desc`, `credit`, `affectation`, `cat`) VALUES
+('LO07', '', 6, 'TCBR', 'TM'),
+('PHYS04', '', 6, 'TC', 'CS');
+
+--
 -- Index pour les tables exportées
 --
 
@@ -218,7 +229,7 @@ ALTER TABLE `Cursus`
 -- Index pour la table `ElemForm`
 --
 ALTER TABLE `ElemForm`
-  ADD PRIMARY KEY (`IdEleve`,`sem_seq`,`sigle`), ADD KEY `fk_sigle` (`sigle`);
+  ADD PRIMARY KEY (`IdEleve`,`sem_seq`,`sigle`), ADD UNIQUE KEY `IdParcours` (`IdParcours`), ADD KEY `fk_sigle` (`sigle`);
 
 --
 -- Index pour la table `Etudiant`
