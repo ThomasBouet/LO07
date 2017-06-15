@@ -1,7 +1,7 @@
 
 <?php
-include('database.php');
-include('bibliotheque.php');
+include('include/database.php');
+include('include/bibliotheque.php');
 
 if (isset($_POST)) {
     for ($i = 1; $i < count($_POST["sigle"]); $i++) {

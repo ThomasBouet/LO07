@@ -1,8 +1,8 @@
 <html>
     <?php
-    include 'bibliotheque.php';
-    include 'recup.php';
-    include 'database.php';
+    include 'include/bibliotheque.php';
+    include 'include/recup.php';
+    include 'include/database.php';
     $id = selectdata("IdEtu","Etudiant",$database);
     $numparcours = array();
     for($i=1; $i<11; $i++){

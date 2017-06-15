@@ -1,6 +1,6 @@
 <?php
-require_once 'database.php';
-include 'elmt_formation.php';
+require_once 'include/database.php';
+include 'include/elmt_formation.php';
 /**
  * Created by PhpStorm.
  * User: Christine

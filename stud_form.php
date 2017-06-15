@@ -30,9 +30,9 @@
     </head>
 <?php
 session_start();
-include_once('database.php');
-include_once('bibliotheque.php');
-include_once('etudiant.php');
+include_once('include/database.php');
+include_once('include/bibliotheque.php');
+include_once('include/etudiant.php');
 $filiere = selectdata("Idfil","Filiere",$database);
 $admission = array('TC','BR');
 ?>

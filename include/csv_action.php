@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php 
-    include 'bibliotheque.php';
-    include 'etudiant.php';
-    include 'elmt_formation.php';
+    include 'include/bibliotheque.php';
+    include 'include/etudiant.php';
+    include 'include/elmt_formation.php';
 ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
