@@ -3,6 +3,8 @@
     include 'include/bibliotheque.php';
     include 'include/recup.php';
     include 'include/database.php';
+    include 'include/rgmt_actuel.php';
+    include 'include/rgmt_futur.php';
     $id = selectdata("IdEtu","Etudiant",$database);
     $numparcours = array();
     for($i=1; $i<11; $i++){
@@ -37,6 +39,33 @@
         }
     }
     ?>
-    
+    <table>
+        <?php ligneTab('CS',$CS); ?>
+        <?php ligneTab('EC',$EC); ?>
+        <?php ligneTab('HT',$HT); ?>
+        <?php ligneTab('ME',$ME); ?>
+        <?php ligneTab('NPML',$NPML); ?>
+        <?php ligneTab('SE',$SE); ?>
+        <?php ligneTab('ST',$ST); ?>
+        <?php ligneTab('TM',$TM); ?>
+    </table>
+    <form method="post" action="#">
+        <select name="choix">
+            <option value="actuel">Réglement actuel</option>
+            <option value="futur">Réglement futur</option>
+        </select>
+    </form>
+    <?php
+        if(!isset($_POST["choix"])) {
+            switch ($_POST["choix"]) {
+                case 'actuel' :
+                    actuel_rgmt($tab);
+                    break;
+                case 'futur' :
+                    futur_rgmt($tab);
+                    break;
+            }
+        }
+    ?>
     </body>
 </html>
