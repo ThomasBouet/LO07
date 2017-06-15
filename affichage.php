@@ -19,6 +19,7 @@ for ($i = 1; $i < 11; $i++) {
 <form method="post" action="#">
     Etudiant<?php echo genereSelect($id, 'idetu', 'idetu'); ?></br>
     Parcours<?php echo genereSelect($numparcours, 'parcours', 'parcours'); ?></br>
+    <input type="submit" value="ENVOYER">
 </form>
 <?php
 /**
@@ -30,62 +31,67 @@ for ($i = 1; $i < 11; $i++) {
 if (!isset($_POST)) {
     $_SESSION["idetu"] = $_POST["idetu"];
     $_SESSION["parcours"] = $_POST["parcours"];
-    $tab = recupParours($_POST["idetu"], $_POST["parcours"], $database);
-    $CS = $EC = $HT = $ME = $NPML = $SE = $ST = $TM = array();
-    foreach ($tab as $value) {
+    $_SESSION['tab'] = recupParours($_POST["idetu"], $_POST["parcours"], $database);
+    $_SESSION['CS'] = $_SESSION['EC'] = $_SESSION['HT'] = $_SESSION['ME'] = $_SESSION['NPML'] = $_SESSION['SE'] = $_SESSION['ST'] = $_SESSION['TM'] = array();
+    foreach ($_SESSION['tab'] as $value) {
         switch ($value->getCategorie()) {
             case 'CS':
-                $CS[] = $value;
+                $_SESSION['CS'][] = $value;
                 break;
             case 'EC':
-                $EC[] = $value;
+                $_SESSION['EC'][] = $value;
                 break;
             case 'HT':
-                $HT[] = $value;
+                $_SESSION['HT'][] = $value;
                 break;
             case 'ME':
-                $ME[] = $value;
+                $_SESSION['ME'][] = $value;
                 break;
             case 'NPML':
-                $NPML[] = $value;
+                $_SESSION['NPML'][] = $value;
                 break;
             case 'SE':
-                $SE[] = $value;
+                $_SESSION['SE'][] = $value;
                 break;
             case 'ST':
-                $ST[] = $value;
+                $_SESSION['ST'][] = $value;
                 break;
             case 'TM':
-                $TM[] = $value;
+                $_SESSION['TM'][] = $value;
                 break;
         }
     }
 }
 ?>
 <table>
-    <?php ligneTab('CS', $CS); ?>
-    <?php ligneTab('EC', $EC); ?>
-    <?php ligneTab('HT', $HT); ?>
-    <?php ligneTab('ME', $ME); ?>
-    <?php ligneTab('NPML', $NPML); ?>
-    <?php ligneTab('SE', $SE); ?>
-    <?php ligneTab('ST', $ST); ?>
-    <?php ligneTab('TM', $TM); ?>
+    <?php
+    if(isset($_SESSION['CS'])&&isset($_SESSION['EC'])&&isset($_SESSION['HT'])&&isset($_SESSION['ME'])&&isset($_SESSION['NPML'])&&isset($_SESSION['SE'])&&isset($_SESSION['ST'])&&isset($_SESSION['TM'])) {
+        ligneTab('CS', $_SESSION['CS']);
+        ligneTab('EC', $_SESSION['EC']);
+        ligneTab('HT', $_SESSION['HT']);
+        ligneTab('ME', $_SESSION['ME']);
+        ligneTab('NPML', $_SESSION['NPML']);
+        ligneTab('SE', $_SESSION['SE']);
+        ligneTab('ST', $_SESSION['ST']);
+        ligneTab('TM', $_SESSION['TM']);
+    }
+    ?>
 </table>
 <form method="post" action="#">
     <select name="choix">
         <option value="actuel">Réglement actuel</option>
         <option value="futur">Réglement futur</option>
+        <input type="submit" value="ENVOYER">
     </select>
 </form>
 <?php
-if (!isset($_POST["choix"])) {
+if (isset($_POST["choix"])) {
     switch ($_POST["choix"]) {
         case 'actuel' :
-            actuel_rgmt($tab);
+            actuel_rgmt($_SESSION['tab']);
             break;
         case 'futur' :
-            futur_rgmt($tab);
+            futur_rgmt($_SESSION['tab']);
             break;
     }
 }
