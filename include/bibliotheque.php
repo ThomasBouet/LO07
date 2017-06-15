@@ -1,6 +1,6 @@
 <?php
-include 'etudiant.php';
-include 'elmt_formation.php';
+require_once 'etudiant.php';
+require_once 'elmt_formation.php';
 require_once 'database.php';
 
 function saveCSV($tab,$nom){
