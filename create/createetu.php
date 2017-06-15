@@ -43,7 +43,7 @@ include('../layout/header.php');
                 Ajout d'un étudiant
             </div>
             <div class="card-block">
-                <form method="POST" action="include/stud_action.php" onsubmit="return verification();">
+                <form method="POST" action="/include/stud_action.php" onsubmit="return verification();">
                     <div class="form-group row">
                         <label for="etunum" class="col-2 col-form-label">Numéro étudiant</label>
                         <div class="col-10">
