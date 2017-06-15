@@ -9,7 +9,7 @@ include 'elmt_formation.php';
  * Time: 12:13
  */
 $SE = $NPML = FALSE;
-$CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = 0;
+$CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = $UTTCSTM  = 0;
 foreach ($tab as $value) {
     if ($value === Element) {
         if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'TCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'TCBR') {
@@ -43,7 +43,7 @@ foreach ($tab as $value) {
             $NPML = TRUE;
         }
     }
-}z
+}
 ?>
 </body>
 
