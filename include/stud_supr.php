@@ -4,7 +4,7 @@
     $nom=array();
     $nom = selectdata("nom","Etudiant",$database);
     var_dump($nom);
-    echo("<form method=\"POST\" action=\"stud_supr.php\">");
+    echo(">");
     echo(genereSelect($nom,"etu","etu"));
     echo("<input type=submit>");
     echo("</form>");

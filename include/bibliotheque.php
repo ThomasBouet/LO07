@@ -74,19 +74,11 @@ function genereSelect($tab,$name,$id){
     return $line;
 }
 
-function genereRadio($tab, $name){
-    $line = "</br>";
-    foreach($tab as $value){
-        $line .= "$value<input type='radio' name='$name' value='$value'>";
-    }
-    return $line;
-}
 
 
 function selectdata ($select,$table,$database){
     $sql = "SELECT `$select` FROM `$table`";
     $res = mysqli_query($database, $sql);
-    var_dump($res);
     $resultats=array();
     while ($row = mysqli_fetch_array($res))
     {

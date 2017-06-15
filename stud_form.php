@@ -32,11 +32,11 @@
 session_start();
 include_once('database.php');
 include_once('bibliotheque.php');
-include_once ('etudiant.php');
+include_once('etudiant.php');
 $filiere = selectdata("Idfil","Filiere",$database);
 $admission = array('TC','BR');
 ?>
-<form method="POST" action="stud_action.php" onsubmit="return verification();">
+<form method="POST" action="include/stud_action.php" onsubmit="return verification();">
          <fieldset>
              Numéro étudiant <input type="text" name="IdEtu" id="numero"> </br>
              Nom <input type="text" name="nom" id="nom"> </br>

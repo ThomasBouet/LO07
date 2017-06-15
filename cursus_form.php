@@ -29,7 +29,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
 
         }
     </script>
-<form method="POST" action="cursus_action.php">
+<form method="POST" action="include/cursus_action.php">
     Numero etudiant : <?php echo(genereSelect($nom,"etu","etu"));?>
 
     <div id='container'>
