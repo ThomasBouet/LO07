@@ -1,10 +1,11 @@
 <html>
     <?php
-    include 'include/bibliotheque.php';
-    include 'include/recup.php';
-    include 'include/database.php';
-    include 'include/rgmt_actuel.php';
-    include 'include/rgmt_futur.php';
+    require_once 'include/bibliotheque.php';
+    require_once 'include/recup.php';
+    require_once 'include/database.php';
+    require_once 'include/rgmt_actuel.php';
+    require_once 'include/rgmt_futur.php';
+    require_once 'include/elmt_formation.php';
     $id = selectdata("IdEtu","Etudiant",$database);
     $numparcours = array();
     for($i=1; $i<11; $i++){

@@ -1,6 +1,6 @@
 <?php
-    include('database.php');
-    include('bibliotheque.php');
+    require_once 'database.php' ;
+    require_once 'bibliotheque.php';
     $nom=array();
     $nom = selectdata("nom","Etudiant",$database);
     var_dump($nom);

@@ -1,6 +1,6 @@
 <?php
-include('database.php');
-include('bibliotheque.php');
+require_once 'database.php';
+require_once 'bibliotheque.php';
 
 
 $etu = $_POST["etu"];
