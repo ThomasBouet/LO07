@@ -70,11 +70,17 @@
                     break;
             }
         }
-        echo "Voulez-vous supprimer ce dossier ?";
+        echo "Voulez-vous supprimer ce parcours ?";
         echo "<form methode='post' action='include/cursus_supr.php'> 
                 <input type=\"hidden\" name=\"etu\" value=".$_SESSION["idetu"].">
                 <input type=\"hidden\" name=\"cursus\" value=".$_SESSION["parcours"]."> 
                 <input type='submit' value='SUPPRIMER'>
+                </form>";
+    echo "Voulez-vous modifier ce parcours ?";
+    echo "<form methode='post' action='include/cursus_modif.php'> 
+                <input type=\"hidden\" name=\"etu\" value=".$_SESSION["idetu"].">
+                <input type=\"hidden\" name=\"cursus\" value=".$_SESSION["parcours"]."> 
+                <input type='submit' value='MODIFIER'>
                 </form>";
     ?>
 
