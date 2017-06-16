@@ -78,25 +78,19 @@ if (isset($_POST)) {
     //}
     ?>
 </table>
-<form method="post" action="#">
+<form method="post" action="include/rgmt_action.php">
     <select name="choix">
         <option value="actuel">Réglement actuel</option>
         <option value="futur">Réglement futur</option>
+        <?php
+        echo "<input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+        <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . ">";
+        ?>
         <input type="submit" value="ENVOYER">
     </select>
 </form>
 <?php
-var_dump($_SESSION['tab']);
-if (isset($_POST["choix"])) {
-    switch ($_POST["choix"]) {
-        case 'actuel' :
-            actuel_rgmt($_SESSION['tab']);
-            break;
-        case 'futur' :
-            futur_rgmt($_SESSION['tab']);
-            break;
-    }
-}
+
 echo "Voulez-vous supprimer ce parcours ?";
 echo "<form methode='post' action='include/cursus_supr.php'> 
                 <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
