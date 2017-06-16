@@ -97,6 +97,91 @@ and open the template in the editor.
         var_dump($tab_ue);
         echo "<input type='hidden' value='".$file['name']."' id='hidden'>";
 
+        var_dump("$etu->numero");
+
+        // ===========================ENTRER TOUT ÇA DANS LA BDD !!!======================//
+
+        //==== ETU======//
+        $IdEtu=$etu->numero;
+        $nom=$etu->nom;
+        $prenom=$etu->prenom;
+        $admission=$etu->admission;
+        $filiere=$etu->filiere;
+        $requete="INSERT INTO `Etudiant` VALUES ('$IdEtu','$nom','$prenom','$admission','$filiere')";
+        $resultat=mysqli_query($database,$requete);
+        if ($resultat){
+            echo("oui");
+        }
+        else {
+            echo ("non");
+            mysqli_error($database);
+        }
+
+        //=================UE==============//
+        for ($i = 0; $i < count($tab_ue); $i++) {
+            $sigle = $tab_ue[$i]->sigle;
+            $categorie = $tab_ue[$i]->categorie;
+            $affectation = $tab_ue[$i]->affectation;
+            $credits = $tab_ue[$i]->credit;
+            $desc='';
+            $requete = "INSERT INTO `Ue` VALUES ('$sigle','$desc','$credits','$affectation','$categorie')";
+            $resultat = mysqli_query($database, $requete);
+            if ($resultat) {
+                echo("oui");
+            } else {
+                echo("erreur");
+                mysqli_error($database);
+            }
+        }
+
+
+        //===== PARCOURS=====//
+
+
+        $sql="SELECT MAX(IdParcours) FROM ElemForm";
+        $resu = mysqli_query($database, $sql);
+        $parcourstab = mysqli_fetch_array($resu);
+        $parcours= $parcourstab[0]+1;
+
+        var_dump(count($tab_ue));
+
+       for ($i = 0; $i < count($tab_ue); $i++) {
+            $ue = $tab_ue["$i"]->sigle;
+            $num = $tab_ue[$i]->sem_seq;
+            $sem = $tab_ue[$i]->sem_label;
+            $profil = $tab_ue[$i]->profil;
+            $utt = $tab_ue[$i]->utt;
+            $res = $tab_ue[$i]->resultat;
+            if ($res=='F' or $res=="ABS"){
+                $credits=0;
+            }
+            else {
+                $sql="SELECT credit FROM Ue Where IdUe='$ue'";
+                $resu = mysqli_query($database, $sql);
+                $credits = mysqli_fetch_array($resu);
+
+            }
+
+
+            $requete = "INSERT INTO `ElemForm` VALUES ('$IdEtu','$num','$sem','$ue','$utt','$profil','$credits[0]','$res','$parcours')";
+            var_dump($credits);
+echo("</br>");
+var_dump($requete);
+echo("</br>");
+            $resultat = mysqli_query($database, $requete);
+            if ($resultat) {
+                echo("parcours enregistre sur $parcours");
+            } else {
+                echo("erreur");
+                mysqli_error($database);
+            }
+        }
+
+
+
+
+
+        //============================VOILA=================================================//
         ?>
         </pre>
         <input type='button'  value='FERMER' onclick='deleteCSV(); document.location.href="truc.php"; '>

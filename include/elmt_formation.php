@@ -1,15 +1,15 @@
 <?php
 class Element{
 	
-	private $sem_seq;
-	private $sem_label;
-	private $sigle;
-	private $categorie;
-	private $affectation;
-	private $utt;
-	private $profil;
-	private $credit;
-	private $resultat;
+	public $sem_seq;
+	public $sem_label;
+	public $sigle;
+	public $categorie;
+	public $affectation;
+	public $utt;
+	public $profil;
+	public $credit;
+	public $resultat;
 	
 	function __construct($sem_seq, $sem_label, $sigle, $categorie, $affectation, $utt, $profil, $credit, $resultat) {
             $this->sem_seq = $sem_seq;

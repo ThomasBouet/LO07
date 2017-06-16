@@ -1,11 +1,11 @@
 <?php
 class Etudiant{
 	
-	private $numero;
-	private $nom;
-	private $prenom;
-	private $admission;
-	private $filiere;
+	public $numero;
+	public $nom;
+	public $prenom;
+	public $admission;
+	public $filiere;
 	
 	function __construct($numero, $nom, $prenom, $admission, $filiere) {
             $this->numero = $numero;
