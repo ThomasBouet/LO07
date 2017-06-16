@@ -107,12 +107,11 @@ function ligneTab($nom, $tab){
                 <h1>$nom</h1>
             </td>";
     foreach($tab as $value){
-        echo"<td>
-                $value->getSem_label().$value->getSem_seq()</br>
-                $value->getLabel()</br>
-                $value->getResultat()</br>
-                $value->getCredit();
-            </td>";
+        $semlab = $value->getSem_label();
+        $lab = $value->getSigle();
+        $r = $value->getResultat();
+        $c = $value->getCredit();
+        echo"<td>".$semlab."</br>".$lab."</br>".$r."</br>".$c."</td>";
     }
     echo"</tr>";
 }

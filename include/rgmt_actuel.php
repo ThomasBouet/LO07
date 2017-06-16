@@ -11,40 +11,40 @@ function actuel_rgmt($tab)
     $SE = $NPML = FALSE;
     $CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = $UTTCSTM = $final = 0;
     foreach ($tab as $value) {
-        if ($value === Element) {
-            if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'TCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'TCBR') {
-                $CSTMtcbr++;
-            }
-            if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'FCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'FCBR') {
-                $CSTMfcbr++;
-            }
-            if ($value->getCategorie() == 'TM') {
-                $TMbr++;
-            }
-            if ($value->getCategorie() == 'ST') {
-                $STfcbr++;
-            }
-            if ($value->getCategorie() == 'ST'){                $STtcbr++;
-            }
-            if ($value->getCategorie() == 'HT') {
-                $CTbr++;
-            }
-            if ($value->getCategorie() == 'EC') {
-                $ECbr++;
-            }
-            if ($value->getCategorie() == 'ME') {
-                $MEbr++;
-            }
-            if ($value->getCategorie == 'CS' && $value->getUtt() || $value->getCategorie == 'TM' && $value->getUtt()) {
-                $UTTCSTM++;
-            }
-            if ($value->getCategorie() == 'SE') {
-                $SE = TRUE;
-            }
-            if ($value->getCategorie() == 'NPML') {
-                $NPML = TRUE;
-            }
+        if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'TCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'TCBR') {
+            $CSTMtcbr++;
         }
+        if ($value->getCategorie() == 'CS' && $value->getAffectation() == 'FCBR' || $value->getCategorie() == 'TM' && $value->getAffectation() == 'FCBR') {
+            $CSTMfcbr++;
+        }
+        if ($value->getCategorie() == 'TM') {
+            $TMbr++;
+        }
+        if ($value->getCategorie() == 'ST') {
+            $STfcbr++;
+        }
+        if ($value->getCategorie() == 'ST') {
+            $STtcbr++;
+        }
+        if ($value->getCategorie() == 'HT') {
+            $CTbr++;
+        }
+        if ($value->getCategorie() == 'EC') {
+            $ECbr++;
+        }
+        if ($value->getCategorie() == 'ME') {
+            $MEbr++;
+        }
+        if ($value->getCategorie == 'CS' && $value->getUtt() || $value->getCategorie == 'TM' && $value->getUtt()) {
+            $UTTCSTM++;
+        }
+        if ($value->getCategorie() == 'SE') {
+            $SE = TRUE;
+        }
+        if ($value->getCategorie() == 'NPML') {
+            $NPML = TRUE;
+        }
+
     }
     if ($NPML) {
         echo "NPML validé </br>";
@@ -141,6 +141,7 @@ function actuel_rgmt($tab)
         echo "<h1>PROFIL REJETE</h1> </br>";
     }
 }
+
 ?>
 </body>
 

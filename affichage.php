@@ -1,5 +1,6 @@
 <html>
 <?php
+session_start();
 require_once 'include/bibliotheque.php';
 require_once 'include/recup.php';
 require_once 'include/database.php';
@@ -7,14 +8,13 @@ require_once 'include/rgmt_actuel.php';
 require_once 'include/rgmt_futur.php';
 require_once 'include/elmt_formation.php';
 require_once 'layout/header.php';
-session_start();
+
 $id = selectdata("IdEtu", "Etudiant", $database);
 $numparcours = array();
 for ($i = 1; $i < 11; $i++) {
     $numparcours[] = $i;
 }
 ?>
-<head></head>
 <body>
 <form method="post" action="#">
     Etudiant<?php echo genereSelect($id, 'idetu', 'idetu'); ?></br>
@@ -28,14 +28,15 @@ for ($i = 1; $i < 11; $i++) {
  * Date: 15/06/2017
  * Time: 16:21
  */
-if (!isset($_POST)) {
+var_dump($_POST);
+if (isset($_POST)) {
     $_SESSION["idetu"] = $_POST["idetu"];
     $_SESSION["parcours"] = $_POST["parcours"];
     $_SESSION['tab'] = recupParours($_POST["idetu"], $_POST["parcours"], $database);
     $_SESSION['CS'] = $_SESSION['EC'] = $_SESSION['HT'] = $_SESSION['ME'] = $_SESSION['NPML'] = $_SESSION['SE'] = $_SESSION['ST'] = $_SESSION['TM'] = array();
     foreach ($_SESSION['tab'] as $value) {
         switch ($value->getCategorie()) {
-            case 'CS':
+            case "CS":
                 $_SESSION['CS'][] = $value;
                 break;
             case 'EC':
@@ -65,7 +66,7 @@ if (!isset($_POST)) {
 ?>
 <table>
     <?php
-    if(isset($_SESSION['CS'])&&isset($_SESSION['EC'])&&isset($_SESSION['HT'])&&isset($_SESSION['ME'])&&isset($_SESSION['NPML'])&&isset($_SESSION['SE'])&&isset($_SESSION['ST'])&&isset($_SESSION['TM'])) {
+    //if(isset($_SESSION['CS'])&&isset($_SESSION['EC'])&&isset($_SESSION['HT'])&&isset($_SESSION['ME'])&&isset($_SESSION['NPML'])&&isset($_SESSION['SE'])&&isset($_SESSION['ST'])&&isset($_SESSION['TM'])) {
         ligneTab('CS', $_SESSION['CS']);
         ligneTab('EC', $_SESSION['EC']);
         ligneTab('HT', $_SESSION['HT']);
@@ -74,7 +75,7 @@ if (!isset($_POST)) {
         ligneTab('SE', $_SESSION['SE']);
         ligneTab('ST', $_SESSION['ST']);
         ligneTab('TM', $_SESSION['TM']);
-    }
+    //}
     ?>
 </table>
 <form method="post" action="#">
@@ -85,6 +86,7 @@ if (!isset($_POST)) {
     </select>
 </form>
 <?php
+var_dump($_SESSION['tab']);
 if (isset($_POST["choix"])) {
     switch ($_POST["choix"]) {
         case 'actuel' :
