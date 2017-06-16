@@ -159,3 +159,4 @@ $nom = selectdata("IdEtu","Etudiant",$database);
         }
     </script>
 </body>
+</html>
