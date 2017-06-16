@@ -3,45 +3,39 @@ require_once 'etudiant.php';
 require_once 'elmt_formation.php';
 require_once 'database.php';
 
-function saveCSV($tab,$nom){
+function saveCSV($tab,$etu,$nom){
     $filename = "file_csv/".$nom.".csv";
     if(!file_exists($filename)){
         touch ($filename);
+            $ligne = "ID;";
+            $ligne .= $etu->getNumero().";";
+            file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
+            $ligne =  "NO;";
+            $ligne .= $etu->getNom().";";
+            file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
+            $ligne = "PR;";
+            $ligne .= $etu->getPrenom().";";
+            file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
+            $ligne = "AD;";
+            $ligne .= $etu->getAdmission().";";
+            file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
+            $ligne = "FI;";
+            $ligne .= $etu->getFiliere().";";
+            file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
         foreach($tab as $value){
-            if($value=== Etudiant){
-                $ligne = "ID;";
-                $ligne .= $value->getNumero().";";
-                file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-                $ligne =  "NO;";
-                $ligne .= $value->getNom().";";
-                file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-                $ligne = "PR;";
-                $ligne .= $value->getPrenom().";";
-                file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-                $ligne = "AD;";
-                $ligne .= $value->getAdmission().";";
-                file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-                $ligne = "FI;";
-                $ligne .= $value->getFiliere().";";
-                file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-            }if($value=== Element){
                 $ligne = "EL;";
                 $ligne .= $value->getSem_seq().";";
-                $ligne .= $value->getSem_label().$value->getSem_seq().";";
+                $ligne .= $value->getSem_label().";";
                 $ligne .= $value->getSigle().";";
                 $ligne .= $value->getCategorie().";";
-                $ligne .= $value->getAffecation().";";
+                $ligne .= $value->getAffectation().";";
                 $ligne .= $value->getUtt().";";
                 $ligne .= $value->getProfil().";";
                 $ligne .= $value->getCredit().";";
                 $ligne .= $value->getResultat().";";
                 file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-            }
         }
-    }/*else{
-        $ligne = implode(";",$tab);
-        file_put_contents($filename, $ligne."\r\n", FILE_APPEND);
-        }*/
+    }
 }
 
 function readCSV($nom){

@@ -11,7 +11,6 @@ function recupParours($idEtu, $idParcours, $database)
 {
     $r = "SELECT sem_seq, sem_label, sigle,utt,profil,creditobt,resultat FROM `ElemForm` WHERE IdEleve = $idEtu and IdParcours = $idParcours";
     $result = mysqli_query($database, $r);
-    var_dump($result);
     $resultats = array();
     while ($row = mysqli_fetch_array($result)) {
         $ue = new Element("","","","","","","","","");
