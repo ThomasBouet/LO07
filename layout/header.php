@@ -30,11 +30,16 @@
                 <li class="nav-item <?php if($page=='cursuscrea'){echo('active');} ?>">
                     <a class="nav-link" href="/create"><i class="fa fa-fw fa-wrench"></i> Création d'un cursus</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Visualisation d'un cursus</a>
+                </li>
+                <hr/>
                 <li class="nav-item <?php if($page=='adduser'){echo('active');} ?>">
                     <a class="nav-link" href="/create/createetu.php"><i class="fa fa-fw fa-users "></i> Ajouter un Étudiant</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Visualisation d'un cursus</a>
+                <hr/>
+                <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
+                    <a class="nav-link" href="/ue/"><i class="fa fa-fw fa-university"></i> Affichage des UE</a>
                 </li>
             </ul>
         </div>
