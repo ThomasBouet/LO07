@@ -115,25 +115,13 @@ $ue=[];
 foreach ($resultats as $table){
     $ue[]=$table["IdUe"];
 }
-echo("<form method=\"POST\" action=\"ue_form.php\">");
+echo("<form method=\"POST\" action=\"include/ue_form_supr.php\">");
     echo(genereSelect($ue,"ue","ue"));
     echo("<input type=submit>");
     echo("</form>");
 
 
-if (isset($_POST)) {
-    $post = $_POST["ue"];
-    echo("$post");
-    $requete = "DELETE FROM Ue WHERE IdUe = '$post'";
-    $resultat = mysqli_query($database, $requete);
-    echo("[$requete]");
-    if ($resultat) {
-        echo("oui");
-    } else {
-        echo("non");
-        mysqli_error($database);
-    }
-}
+
 
 
 
