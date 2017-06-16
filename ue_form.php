@@ -86,12 +86,12 @@ echo("</table>
 echo("
  
  
- <form method=\"POST\" action=\"ue_action.php\">
+ <form method=\"POST\" action=\"include/ue_action.php\">
      <h1> Ajout de nouvelles UEs</h1>
     <div id='container'>
          <div id=\"dynamicInputHidden\" style=\"display : none;\"> </br>
              <fieldset name=\"fieldset\">
-                 Sigle <input type=\"text\" name=\"sigle[]\"> </br>
+                 Sigle <input type=\"text\" name=\"sigle[]\" required> </br>
 
                 Catégorie\""); echo(genereSelect($cat, 'categorie[]', 'categorie')); echo("</br>
                 Affectation"); echo(genereSelect($affectation, 'affectation[]', 'affectation')); echo(" </br>
@@ -102,7 +102,7 @@ echo("
     </div>
     <div id=\"dynamicInput1\"> </br>
         <fieldset>
-            Sigle <input type=\"text\" name=\"sigle[]\"> </br>
+            Sigle <input type=\"text\" name=\"sigle[]\" required> </br>
             Catégorie");echo(genereSelect($cat, 'categorie[]', 'categorie')); echo("</br>
             Affectation");echo(genereSelect($affectation, 'affectation[]', 'affectation')); echo(" </br>
             Crédits");echo(genereSelect($num, 'credits[]', 'credits')); echo(" </br>
@@ -122,7 +122,7 @@ foreach ($resultats as $table){
     $ue[]=$table["IdUe"];
 }
 echo("<form method=\"POST\" action=\"include/ue_form_supr.php\">");
-    echo(genereSelect($ue,"ue","ue"));
+    echo(genereSelectMult($ue,"ue[]","ue"));
     echo("<input type=submit>");
     echo("</form>");
 
