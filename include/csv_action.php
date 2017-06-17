@@ -13,7 +13,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <script>
+        <script type="text/javascript">
         function deleteCSV(){
             var fname = document.getElementById('hidden').value;
             var http = new XMLHttpRequest();
@@ -95,7 +95,7 @@ and open the template in the editor.
         }
         var_dump($etu);
         var_dump($tab_ue);
-        echo "<input type='hidden' value='".$file['name']."' id='hidden'>";
+        echo "<input type='hidden' value='".$file['name'].".csv' id='hidden'>";
 
         var_dump("$etu->numero");
 
@@ -184,6 +184,6 @@ echo("</br>");
         //============================VOILA=================================================//
         ?>
         </pre>
-        <input type='button'  value='FERMER' onclick='deleteCSV(); document.location.href="truc.php"; '>
+        <input type='button'  value='FERMER' onclick='deleteCSV(); document.location.href="../index.php"; '>
     </body>
 </html>
