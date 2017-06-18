@@ -1,12 +1,12 @@
 <?php
 session_start();
 $page='adduser';
-require_once('/include/database.php');
-require_once('/include/bibliotheque.php');
-require_once('/include/etudiant.php');
+require_once('include/database.php');
+require_once('include/bibliotheque.php');
+require_once('include/etudiant.php');
 $filiere = selectdata("Idfil","Filiere",$database);
 $admission = array('TC','BR');
-include('/layout/header.php');
+include('layout/header.php');
 ?>
 
     <div class="content-wrapper py-3">
