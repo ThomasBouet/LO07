@@ -17,11 +17,11 @@ $router->map('GET','/ue/', '/views/ue/show.php', 'ue-show');
 
 
 // Special (payments, ajax processing, etc)
-$router->map('GET','/charge/[*:customer_id]/','charge.php','charge');
-$router->map('GET','/pay/[*:status]/','payment_results.php','payment-results');
+//$router->map('GET','/charge/[*:customer_id]/','charge.php','charge');
+//$router->map('GET','/pay/[*:status]/','payment_results.php','payment-results');
 
 // API Routes
-$router->map('GET','/api/[*:key]/[*:name]/', 'json.php', 'api');
+//$router->map('GET','/api/[*:key]/[*:name]/', 'json.php', 'api');
 /* Match the current request */
 
 $match = $router->match();
@@ -31,6 +31,6 @@ if($match) {
 }
 else {
     header("HTTP/1.0 404 Not Found");
-    require '404.html';
+    require '/views/404.html';
 }
 ?>
