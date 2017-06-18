@@ -15,6 +15,20 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/tether/tether.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/sb-admin.min.js"></script>
 </head>
 <body>
     <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
@@ -38,8 +52,16 @@
                     <a class="nav-link" href="/create/createetu.php"><i class="fa fa-fw fa-users "></i> Ajouter un Étudiant</a>
                 </li>
                 <hr/>
-                <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
-                    <a class="nav-link" href="/ue/"><i class="fa fa-fw fa-university"></i> Affichage des UE</a>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-university"></i> Gestion des UE</a>
+                    <ul class="sidebar-second-level collapse" id="collapseMulti">
+                        <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
+                            <a class="nav-link" href="/ue/"> Ajouter une UE</a>
+                        </li>
+                        <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
+                            <a class="nav-link" href="/ue/"> Affichage des UE</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
