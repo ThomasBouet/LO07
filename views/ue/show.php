@@ -1,10 +1,10 @@
 <?php
 $page='uelist';
-require('/layout/header.php');
+require('layout/header.php');
 session_start();
-include_once('/include/database.php');
-include_once('/include/bibliotheque.php');
-include_once('/include/elmt_formation.php');
+include_once('include/database.php');
+include_once('include/bibliotheque.php');
+include_once('include/elmt_formation.php');
 $num = array(1, 2, 3, 4, 5, 6);
 
 $cat = selectdata("IdCat", "Categorie_UE", $database);
