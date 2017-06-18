@@ -1,8 +1,8 @@
 <?php
 $page='cursuscrea';
-include('../layout/header.php');
-include_once('../include/database.php');
-include_once('../include/bibliotheque.php');
+include('/layout/header.php');
+include_once('/include/database.php');
+include_once('/include/bibliotheque.php');
 $resultat = array('A', 'B', 'C', 'D', 'E', 'F', 'ADM', 'RES', 'ABS');
 $yesno = array('Y', 'N');
 $num = array(1, 2, 3, 4, 5, 6,7,8,9,10,11,12);
@@ -30,7 +30,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                                 </div>
                             </div>
                             <div class="col col-lg-7 text-right">
-                                <a href="createetu.php" class="btn btn-secondary">Ajouter un Étudiant</a>
+                                <a href="/student/create" class="btn btn-secondary">Ajouter un Étudiant</a>
                             </div>
                         </div>
                     </div>

@@ -1,20 +1,36 @@
-<?php $page='accueil'; require('layout/header.php')?>
+<?php
+header("Content-Type: text/html");
+include dirname(__FILE__) . '/include/AltoRouter.php';
+$router = new AltoRouter();
+$router->setBasePath('');
 
-    <div class="content-wrapper py-3">
-        <div class="container-fluid">
-            <!-- Breadcrumbs -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Accueil</li>
-            </ol>
-            <div class="card-block">
-                <a class="btn btn-default btn-lg btn-block" href="/create"><i class="fa fa-wrench fa-lg" aria-hidden="true"></i>
-                    Création d'un cursus</a>
-                <hr />
-                <a class="btn btn-default btn-lg btn-block" href="/create/students"><i class="fa fa-table fa-lg" aria-hidden="true"></i>
-                    Visualisation d'un cursus
-                </a>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+/* Setup the URL routing. This is production ready. */
+// Main routes that non-customers see
+
+$router->map('GET','/', '/views/home.php', 'home');
+
+$router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
+
+$router->map('GET','/student/create', '/views/student/create.php', 'student-create');
+
+$router->map('GET','/ue/', '/views/ue/show.php', 'ue-show');
+
+
+// Special (payments, ajax processing, etc)
+$router->map('GET','/charge/[*:customer_id]/','charge.php','charge');
+$router->map('GET','/pay/[*:status]/','payment_results.php','payment-results');
+
+// API Routes
+$router->map('GET','/api/[*:key]/[*:name]/', 'json.php', 'api');
+/* Match the current request */
+
+$match = $router->match();
+
+if($match) {
+    require $match['target'];
+}
+else {
+    header("HTTP/1.0 404 Not Found");
+    require '404.html';
+}
+?>
