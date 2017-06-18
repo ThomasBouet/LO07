@@ -27,10 +27,10 @@ $router->map('GET','/ue/', '/views/ue/show.php', 'ue-show');
 $match = $router->match();
 
 if($match) {
-    require $match['target'];
+    require __DIR__ . $match['target'];
 }
 else {
     header("HTTP/1.0 404 Not Found");
-    require '/views/404.html';
+    require __DIR__  .'/views/404.html';
 }
 ?>
