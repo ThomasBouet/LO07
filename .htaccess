@@ -3,7 +3,7 @@ RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)\.(css|js|scss)$ public/$1.$2 [L,NC]
+RewriteRule ^(.*)\.(css|js|scss|map)$ public/$1.$2 [L,NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^/include/(.*)$ include/$1 [L,NC]
