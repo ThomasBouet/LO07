@@ -109,3 +109,45 @@ function ligneTab($nom, $tab){
     }
     echo"</tr>";
 }
+
+function flash( $name = '', $message = '', $class = 'alert alert-success' )
+{
+    if( !session_id() )
+    {
+        session_start();
+    }
+
+    //We can only do something if the name isn't empty
+    if( !empty( $name ) )
+    {
+        //No message, create it
+        if( !empty( $message ) & empty( $_SESSION[$name] ) )
+        {
+            if( !empty( $_SESSION[$name] ) )
+            {
+                unset( $_SESSION[$name] );
+            }
+            if( !empty( $_SESSION[$name.'_class'] ) )
+            {
+                unset( $_SESSION[$name.'_class'] );
+            }
+
+            $_SESSION[$name] = $message;
+            $_SESSION[$name.'_class'] = $class;
+        }
+
+        //Message exists, display it
+        elseif( !empty( $_SESSION[$name] ) & empty( $message ) )
+        {
+            $class = !empty( $_SESSION[$name.'_class'] ) ? $_SESSION[$name.'_class'] : 'success';
+            echo '<div class="'.$class.'" role="alert" id="msg-flash">'
+                .'<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>'
+                .$_SESSION[$name].'</div>';
+
+            unset($_SESSION[$name]);
+            unset($_SESSION[$name.'_class']);
+        }
+    }
+}
