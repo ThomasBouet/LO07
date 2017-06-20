@@ -11,13 +11,16 @@
         $requete="INSERT INTO `Etudiant` VALUES ('$IdEtu','$nom','$prenom','$admission','$filiere')";
         $resultat=mysqli_query($database,$requete);
         if ($resultat){
-            echo("oui");
+            flash( 'status', 'Utilisateur ajouté avec <strong>succès</strong>!','alert alert-success');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         else {
-            echo ("non");
+            flash( 'status', '<strong>Mince Alors!</strong> Quelque chose c\'est mal passé (Mysql)','alert alert-danger');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
             mysqli_error($database);
         }
     }
     else {
-        echo("pas de bonnes entrees");
+        flash( 'status', '<strong>Mince Alors!</strong> Quelque chose c\'est mal passé (wrong input)','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

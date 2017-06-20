@@ -1,5 +1,4 @@
 <?php
-session_start();
 $page='adduser';
 require_once('include/database.php');
 require_once('include/bibliotheque.php');
@@ -16,7 +15,7 @@ include('layout/header.php');
                 <li class="breadcrumb-item ">Projet LO07</li>
                 <li class="breadcrumb-item active">Création d'un cursus</li>
             </ol>
-
+            <?php flash( 'status' ); ?>
             <div class="card">
                 <div class="card-header">
                     Ajout d'un étudiant
