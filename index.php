@@ -16,7 +16,10 @@ $router->map('GET','/student/create', '/views/student/create.php', 'student-crea
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
 
 $router->map('GET','/ue/', '/views/ue/show.php', 'ue-show');
+$router->map('GET','/ue/create', '/views/ue/create.php', 'ue-create');
+$router->map('POST','/ue/create', '/include/ue_action.php', 'ue-add');
 
+    $router->map('GET','/uedebug', '/ue_form.php', 'cursus-show');
 
 // Special (payments, ajax processing, etc)
 //$router->map('GET','/charge/[*:customer_id]/','charge.php','charge');
