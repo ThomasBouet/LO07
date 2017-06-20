@@ -22,7 +22,7 @@ include('layout/header.php');
                     Ajout d'un étudiant
                 </div>
                 <div class="card-block">
-                    <form method="POST" action="/include/stud_action.php" onsubmit="return verification();">
+                    <form method="POST" action="" onsubmit="return verification();">
                         <div class="form-group row">
                             <label for="etunum" class="col-2 col-form-label">Numéro étudiant</label>
                             <div class="col-10">
@@ -53,16 +53,12 @@ include('layout/header.php');
                                 <?php echo(genereSelect($filiere,'filiere','filiere'));?>
                             </div>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="Envoyer">
+                        <div class="row">
+                            <div class="col col-lg-12 text-right">
+                                <input class="btn btn-primary" type="submit" value="Envoyer">
+                            </div>
+                        </div>
                     </form>
-                    <?php
-                    if(!isset($_POST)){
-                        var_dump($_POST);
-                        $etu = new Etudiant($_POST[0],$_POST[1],$_POST[2],$_POST[3],$_POST[4]);
-                        var_dump($etu);
-                        $_SESSION["etu"] = $etu;
-                    }
-                    ?>
                 </div>
             </div>
         </div>
