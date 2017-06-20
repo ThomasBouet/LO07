@@ -55,11 +55,11 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-collapse collapsed <?php if($page=='ueadd' or $page=='uelist'){echo('active');} ?>" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-university"></i> Gestion des UE</a>
                     <ul class="sidebar-second-level collapse" id="collapseMulti">
+                        <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
+                            <a class="nav-link" href="/ue"> Affichage des UE</a>
+                        </li>
                         <li class="nav-item <?php if($page=='ueadd'){echo('active');} ?>">
                             <a class="nav-link" href="/ue/create"> Ajouter une UE</a>
-                        </li>
-                        <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
-                            <a class="nav-link" href="/ue/"> Affichage des UE</a>
                         </li>
                     </ul>
                 </li>
