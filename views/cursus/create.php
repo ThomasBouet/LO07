@@ -17,7 +17,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                 <li class="breadcrumb-item">Projet LO07</li>
                 <li class="breadcrumb-item active">Création d'un cursus</li>
             </ol>
-            <form method="POST" action="/include/cursus_action.php">
+            <form method="POST" action="">
                 <div class="card">
                     <div class="card-header">
                         <div class="row">

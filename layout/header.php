@@ -8,7 +8,7 @@
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Plugin CSS -->
     <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -53,9 +53,9 @@
                 </li>
                 <hr/>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-university"></i> Gestion des UE</a>
+                    <a class="nav-link nav-link-collapse collapsed <?php if($page=='ueadd' or $page=='uelist'){echo('active');} ?>" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-university"></i> Gestion des UE</a>
                     <ul class="sidebar-second-level collapse" id="collapseMulti">
-                        <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
+                        <li class="nav-item <?php if($page=='ueadd'){echo('active');} ?>">
                             <a class="nav-link" href="/ue/create"> Ajouter une UE</a>
                         </li>
                         <li class="nav-item <?php if($page=='uelist'){echo('active');} ?>">
