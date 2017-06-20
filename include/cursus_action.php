@@ -10,7 +10,7 @@ $resu = mysqli_query($database, $sql);
 $parcourstab = mysqli_fetch_array($resu);
 $parcours= $parcourstab[0]+1;
 
-for ($i = 1; $i < count($_POST["ue"]); $i++) {
+for ($i = 0; $i < count($_POST["ue"]); $i++) {
     $ue = $_POST["ue"][$i];
     $num = $_POST["num"][$i];
     $sem = $_POST["sem_label"][$i];

@@ -17,13 +17,13 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                 <li class="breadcrumb-item">Projet LO07</li>
                 <li class="breadcrumb-item active">Création d'un cursus</li>
             </ol>
-            <form method="POST" action="">
+            <form method="post" action="">
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
                             <div class="col col-lg-5">
                                 <div class="form-group row">
-                                    <label for="numetu" class="col-4 col-form-label">Numéro étudiant:</label>
+                                    <label for="etu" class="col-4 col-form-label">Numéro étudiant:</label>
                                     <div class="col-6">
                                         <?php echo(genereSelect($nom,"etu","etu"));?>
                                     </div>
@@ -35,53 +35,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                         </div>
                     </div>
                     <div class="card-block">
-                        <div id='container'>
-                            <div id="dynamicInputHidden" style="display : none;">
-                                <div class="card card-outline-info mb-3 text-center">
-                                    <div class="card-block">
-                                        <blockquote class="card-blockquote">
-                                            <div class="form-group row">
-                                                <label for="ue" class="col-2 col-form-label">Nom de l'UE:</label>
-                                                <div class="col-10">
-                                                    <?php echo(genereSelect($ues,'ue[]','ue'));?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="num" class="col-2 col-form-label">Numéro du semestre:</label>
-                                                <div class="col-10">
-                                                    <?php echo(genereSelect($num, 'num[]', 'num'));?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="sem_label" class="col-2 col-form-label">Label du semestre:</label>
-                                                <div class="col-10">
-                                                    <input type="text" class="form-control" name="sem_label[]">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="profil" class="col-2 col-form-label">Profil:</label>
-                                                <div class="col-10">
-                                                    <?php echo(genereSelect($yesno, 'profil[]', 'profil')); ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="utt" class="col-2 col-form-label">UTT:</label>
-                                                <div class="col-10">
-                                                    <?php echo(genereSelect($yesno, 'UTT[]', 'utt')); ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="utt" class="col-2 col-form-label">Resultat:</label>
-                                                <div class="col-10">
-                                                    <?php echo(genereSelect($resultat, 'resultat[]', 'resultat')); ?>
-                                                </div>
-                                            </div>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="dynamicInput1">
+                        <div id="dynamicInput">
                             <div class="card card-outline-info mb-3 text-center">
                                 <div class="card-block">
                                     <blockquote class="card-blockquote">
@@ -100,7 +54,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                                         <div class="form-group row">
                                             <label for="sem_label" class="col-2 col-form-label">Label du semestre:</label>
                                             <div class="col-10">
-                                                <input type="text" class="form-control" name="sem_label[]">
+                                                <input id="sem_label" type="text" class="form-control" name="sem_label[]">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -125,10 +79,9 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col col-lg-2">
-                                <button type="button" onclick="addInput('dynamicInput');" class="btn btn-secondary">Ajouter une UV au cursus</button>
+                                <button type="button" id="duplicate" class="btn btn-secondary">Ajouter une UV au cursus</button>
                             </div>
                             <div class="col col-lg-10 text-right">
                                 <button type="submit" class="btn btn-primary">Valider </button>
@@ -140,23 +93,11 @@ $nom = selectdata("IdEtu","Etudiant",$database);
         </div>
     </div>
     <script>
-        var counter = 0;
-        var limit = 30;
-        var original = document.getElementById('dynamicInputHidden');
-        function addInput() {
-            if (counter == limit) {
-                alert("You have reached the limit of adding " + counter + " inputs");
-            } else {
-                var original = document.getElementById('dynamicInputHidden');
-                var clone = original.cloneNode(true);
-                counter++;
-                clone.id = 'dynamicInput' + counter;
-                var id = clone.id;
-                clone.style = "display : initial;";
-                clone.name = 'clone' + counter;
-                original.parentNode.appendChild(clone);
-            }
-        }
+        $(document).ready(function(){
+            $('#duplicate').click(function(){
+                $("#dynamicInput").clone().insertAfter("#dynamicInput");
+            });
+        });
     </script>
 </body>
 </html>
