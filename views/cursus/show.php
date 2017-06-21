@@ -129,7 +129,7 @@ foreach ($merged as $uv){
                                 <div class="card card-inverse <?php if($status[1]==-1){echo('card-warning');} else {echo('card-success');}?> mb-3 text-center">
                                     <blockquote class="card-blockquote">
                                         <h5>NPML:</h5>
-                                        <footer> <?php if($status[0]==-1){echo('Non validé');} else {echo('Semestre n°'.$status[1]);}?> </footer>
+                                        <footer> <?php if($status[1]==-1){echo('Non validé');} else {echo('Semestre n°'.$status[1]);}?> </footer>
                                     </blockquote>
                                 </div>
                             </div>
