@@ -10,22 +10,17 @@ require_once 'include/elmt_formation.php';
 //require_once 'layout/header.php';
 
 $id = selectdata("IdEtu", "Etudiant", $database);
-//$numparcours = array();
-//for ($i = 1; $i < 11; $i++) {
-//    $numparcours[] = $i;
-//}
 echo("<form method='post' action='affichage.php'>");
-echo genereSelect($id,'idetu','idetu');
+echo genereSelect($id, 'idetu', 'idetu');
 echo("<input type=\"submit\" value=\"ENVOYER\">");
 echo("</br>");
 
-if(isset($_POST['idetu'])){
+if (isset($_POST['idetu'])) {
     $etu = $_POST['idetu'];
     $sql = "SELECT DISTINCT `IdParcours` FROM `ElemForm` WHERE IdEleve = '$etu'";
     $res = mysqli_query($database, $sql);
-    $resultats=array();
-    while ($row = mysqli_fetch_array($res))
-    {
+    $resultats = array();
+    while ($row = mysqli_fetch_array($res)) {
         $resultats[] = $row[0];
     }
     echo("<form method='post' action='affichage.php'>");
@@ -33,11 +28,9 @@ if(isset($_POST['idetu'])){
     $line .= genereOption($resultats);
     $line .= '</select>';
     echo $line;
-      echo("<input type=\"submit\" value=\"ENVOYER\">");
+    echo("<input type=\"submit\" value=\"ENVOYER\">");
 
 }
-
-
 
 
 //?>
@@ -49,7 +42,6 @@ if(isset($_POST['idetu'])){
 <!--</form>-->
 <?php
 
-//var_dump($_POST);
 if (isset($_POST['parcours'])) {
     $_SESSION["idetu"] = $_POST["idetu"];
     $_SESSION["parcours"] = $_POST["parcours"];
@@ -87,7 +79,7 @@ if (isset($_POST['parcours'])) {
 ?>
 <table>
     <?php
-    //if(isset($_SESSION['CS'])&&isset($_SESSION['EC'])&&isset($_SESSION['HT'])&&isset($_SESSION['ME'])&&isset($_SESSION['NPML'])&&isset($_SESSION['SE'])&&isset($_SESSION['ST'])&&isset($_SESSION['TM'])) {
+    if (!empty($_POST)) {
         ligneTab('CS', $_SESSION['CS']);
         ligneTab('EC', $_SESSION['EC']);
         ligneTab('HT', $_SESSION['HT']);
@@ -96,7 +88,7 @@ if (isset($_POST['parcours'])) {
         ligneTab('SE', $_SESSION['SE']);
         ligneTab('ST', $_SESSION['ST']);
         ligneTab('TM', $_SESSION['TM']);
-    //}
+    }
     ?>
 </table>
 <form method="post" action="include/rgmt_action.php">
@@ -111,32 +103,33 @@ if (isset($_POST['parcours'])) {
     </select>
 </form>
 <?php
-
-echo "Voulez-vous supprimer ce parcours ?";
-echo "<form method='post' action='include/cursus_supr.php'> 
+if (!empty($_SESSION)) {
+    echo "Voulez-vous supprimer ce parcours ?";
+    echo "<form method='post' action='include/cursus_supr.php'> 
                 <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='SUPPRIMER'>
                 </form>";
-echo "Voulez-vous modifier ce parcours ?";
-echo "<form method='post' action='include/cursus_modif.php'> 
+    echo "Voulez-vous modifier ce parcours ?";
+    echo "<form method='post' action='include/cursus_modif.php'> 
                 <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='MODIFIER'>
                 </form>";
-echo "Voulez-vous sauvegarder ce parcours ?";
-echo "<form method='post' action='include/csv_export.php'> 
+    echo "Voulez-vous sauvegarder ce parcours ?";
+    echo "<form method='post' action='include/csv_export.php'> 
                 <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='SAUVEGARDER'>
                 </form>";
 
-echo "Voulez-vous dupliquer ce parcours ?";
-echo "<form method='post' action='include/cursus_dup.php'> 
+    echo "Voulez-vous dupliquer ce parcours ?";
+    echo "<form method='post' action='include/cursus_dup.php'> 
                 <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='DUPLIQUER'>
                 </form>";
+}
 
 ?>
 </body>
