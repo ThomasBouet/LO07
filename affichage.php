@@ -7,29 +7,50 @@ require_once 'include/database.php';
 require_once 'include/rgmt_actuel.php';
 require_once 'include/rgmt_futur.php';
 require_once 'include/elmt_formation.php';
-require_once 'layout/header.php';
+//require_once 'layout/header.php';
 
 $id = selectdata("IdEtu", "Etudiant", $database);
-$numparcours = array();
-for ($i = 1; $i < 11; $i++) {
-    $numparcours[] = $i;
+//$numparcours = array();
+//for ($i = 1; $i < 11; $i++) {
+//    $numparcours[] = $i;
+//}
+echo("<form method='post' action='affichage.php'>");
+echo genereSelect($id,'idetu','idetu');
+echo("<input type=\"submit\" value=\"ENVOYER\">");
+echo("</br>");
+
+if(isset($_POST['idetu'])){
+    $etu = $_POST['idetu'];
+    $sql = "SELECT DISTINCT `IdParcours` FROM `ElemForm` WHERE IdEleve = '$etu'";
+    $res = mysqli_query($database, $sql);
+    $resultats=array();
+    while ($row = mysqli_fetch_array($res))
+    {
+        $resultats[] = $row[0];
+    }
+    echo("<form method='post' action='affichage.php'>");
+    $line = "<select class='form-control' name='parcours' id='parcours'>";
+    $line .= genereOption($resultats);
+    $line .= '</select>';
+    echo $line;
+      echo("<input type=\"submit\" value=\"ENVOYER\">");
+
 }
-?>
-<body>
-<form method="post" action="#">
-    Etudiant<?php echo genereSelect($id, 'idetu', 'idetu'); ?></br>
-    Parcours<?php echo genereSelect($numparcours, 'parcours', 'parcours'); ?></br>
-    <input type="submit" value="ENVOYER">
-</form>
+
+
+
+
+//?>
+<!--<body>-->
+<!--<form method="post" action="#">-->
+<!--    Etudiant--><?php //echo genereSelect($id, 'idetu', 'idetu'); ?><!--</br>-->
+<!--    Parcours--><?php //echo genereSelect($numparcours, 'parcours', 'parcours'); ?><!--</br>-->
+<!--    <input type="submit" value="ENVOYER">-->
+<!--</form>-->
 <?php
-/**
- * Created by PhpStorm.
- * User: Christine
- * Date: 15/06/2017
- * Time: 16:21
- */
-var_dump($_POST);
-if (isset($_POST)) {
+
+//var_dump($_POST);
+if (isset($_POST['parcours'])) {
     $_SESSION["idetu"] = $_POST["idetu"];
     $_SESSION["parcours"] = $_POST["parcours"];
     $_SESSION['tab'] = recupParours($_POST["idetu"], $_POST["parcours"], $database);
@@ -109,6 +130,14 @@ echo "<form method='post' action='include/csv_export.php'>
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='SAUVEGARDER'>
                 </form>";
+
+echo "Voulez-vous dupliquer ce parcours ?";
+echo "<form method='post' action='include/cursus_dup.php'> 
+                <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+                <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
+                <input type='submit' value='DUPLIQUER'>
+                </form>";
+
 ?>
 </body>
 </html>
