@@ -14,32 +14,33 @@ function actuel_rgmt($tab)
         $cat = $value->getCategorie();
         $affectation = $value->getAffectation();
         $utt = $value->getUTT();
+        $credit = $value->getCredit();
         if (($cat == 'CS' && $affectation == 'TCBR') || ($cat == 'TM' && $affectation == 'TCBR')) {
-            $CSTMtcbr ++;
+            $CSTMtcbr += $credit;
         }
         if (($cat == 'CS' && $affectation == 'FCBR') || ($cat == 'TM' && $affectation == 'FCBR')) {
-            $CSTMfcbr++;
+            $CSTMfcbr += $credit;
         }
         if ($cat == 'TM' && $affectation == 'BR') {
-            $TMbr++;
+            $TMbr += $credit;
         }
         if ($cat == 'ST' && $affectation == 'BR') {
-            $STfcbr++;
+            $STfcbr += $credit;
         }
         if ($cat == 'ST' && $affectation == 'BR') {
-            $STtcbr++;
+            $STtcbr += $credit;
         }
         if ($cat == 'HT' && $affectation == 'BR') {
-            $CTbr++;
+            $CTbr += $credit;
         }
         if ($cat == 'EC' && $affectation == 'BR') {
-            $ECbr++;
+            $ECbr += $credit;
         }
         if ($cat == 'ME' && $affectation == 'BR') {
-            $MEbr++;
+            $MEbr += $credit;
         }
         if (($cat == 'CS' && $utt =='Y') || ($cat == 'TM' && $utt == 'Y')) {
-            $UTTCSTM++;
+            $UTTCSTM += $credit;
         }
         if ($cat == 'SE') {
             $SE = TRUE;

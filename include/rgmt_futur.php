@@ -16,31 +16,31 @@ function futur_rgmt($tab)
         $utt = $value->getUTT();
         $cred = $value->getCredit();
             if (($cat == 'CS' && $affectation == 'TCBR') || ($cat == 'TM' && $affectation == 'TCBR')) {
-                $CSTMtcbr++;
+                $CSTMtcbr += $cred;
             }
             if (($cat == 'CS' && $affectation == 'FCBR') || ($cat == 'TM' && $affectation == 'FCBR')) {
-                $CSTMfcbr++;
+                $CSTMfcbr += $cred;
             }
             if ($cat == 'TM'  && $affectation == 'BR') {
-                $TMbr++;
+                $TMbr+= $cred;
             }
             if ($cat == 'ST'  && $affectation == 'BR') {
-                $STfcbr++;
+                $STfcbr+= $cred;
             }
             if ($cat == 'ST'  && $affectation == 'BR') {
-                $STtcbr++;
+                $STtcbr+= $cred;
             }
             if ($cat == 'HT'  && $affectation == 'BR') {
-                $CTbr++;
+                $CTbr+= $cred;
             }
             if ($cat == 'EC' && $affectation == 'BR') {
-                $ECbr++;
+                $ECbr+= $cred;
             }
             if ($cat == 'ME' && $affectation == 'BR') {
-                $MEbr++;
+                $MEbr+= $cred;
             }
             if (($value->getCategorie == 'CS' && $utt) || ($value->getCategorie == 'TM' && $utt)) {
-                $UTTCSTM++;
+                $UTTCSTM+= $cred;
             }
             if ($cat == 'SE') {
                 $SE = TRUE;

@@ -7,5 +7,5 @@ and open the template in the editor.
 <?php
 $fname = $_POST['filename'];
 echo $fname;
-unlink("./file_csv/".$fname);
+unlink("file_csv/".$fname);
 ?>
