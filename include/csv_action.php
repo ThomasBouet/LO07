@@ -39,7 +39,7 @@ and open the template in the editor.
     <body>
         <pre>
         <?php
-        // put your code here
+
         if(!is_dir("file_csv/")) mkdir("./file_csv/");
         //var_dump($_FILES);
         $file = $_FILES['csv'];
@@ -122,10 +122,11 @@ and open the template in the editor.
             $sigle = $tab_ue[$i]->sigle;
             $categorie = $tab_ue[$i]->categorie;
             $affectation = $tab_ue[$i]->affectation;
-            $credits = $tab_ue[$i]->credit;
-            $desc='';
+            $credits = intval($tab_ue[$i]->credit);
+            $desc=' ';
             $requete = "INSERT INTO `Ue` VALUES ('$sigle','$desc','$credits','$affectation','$categorie')";
             $resultat = mysqli_query($database, $requete);
+            var_dump($requete);
             if ($resultat) {
                 echo("oui");
             } else {
@@ -138,7 +139,7 @@ and open the template in the editor.
         //===== PARCOURS=====//
 
 
-        $sql="SELECT MAX(IdParcours) FROM ElemForm";
+        $sql="SELECT MAX(IdParcours) FROM ElemForm WHERE IdEleve=$IdEtu";
         $resu = mysqli_query($database, $sql);
         $parcourstab = mysqli_fetch_array($resu);
         $parcours= $parcourstab[0]+1;
@@ -147,23 +148,24 @@ and open the template in the editor.
 
        for ($i = 0; $i < count($tab_ue); $i++) {
             $ue = $tab_ue["$i"]->sigle;
-            $num = $tab_ue[$i]->sem_seq;
+            $num = intval($tab_ue[$i]->sem_seq);
             $sem = $tab_ue[$i]->sem_label;
             $profil = $tab_ue[$i]->profil;
             $utt = $tab_ue[$i]->utt;
             $res = $tab_ue[$i]->resultat;
-            if ($res=='F' or $res=="ABS"){
-                $credits=0;
-            }
-            else {
-                $sql="SELECT credit FROM Ue Where IdUe='$ue'";
-                $resu = mysqli_query($database, $sql);
-                $credits = mysqli_fetch_array($resu);
+            $credits=intval($tab_ue[$i]->credit);
+//            if ($res=='F' or $res=="ABS"){
+//                $credits=0;
+//            }
+//            else {
+//                $sql="SELECT credit FROM Ue Where IdUe='$ue'";
+//                $resu = mysqli_query($database, $sql);
+//                $credits = mysqli_fetch_array($resu);
+//
+//            }
 
-            }
 
-
-            $requete = "INSERT INTO `ElemForm` VALUES ('$IdEtu','$num','$sem','$ue','$utt','$profil','$credits[0]','$res','$parcours')";
+            $requete = "INSERT INTO `ElemForm` VALUES ('$IdEtu','$num','$sem','$ue','$utt','$profil','$credits','$res','$parcours')";
             var_dump($credits);
 echo("</br>");
 var_dump($requete);
