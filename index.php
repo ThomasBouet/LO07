@@ -10,7 +10,7 @@ $router->setBasePath('');
 $router->map('GET','/', '/views/home.php', 'home');
 
 $router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
-$router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add'); //TODO: need to be fixed
+$router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
 
 $router->map('GET','/student/create', '/views/student/create.php', 'student-create');
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
