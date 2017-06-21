@@ -48,6 +48,9 @@
                     <a class="nav-link" href="/cursus"><i class="fa fa-fw fa-table"></i> Visualisation d'un cursus</a>
                 </li>
                 <hr/>
+                <li class="nav-item <?php if($page=='studentlist'){echo('active');} ?>">
+                    <a class="nav-link" href="/student"><i class="fa fa-fw fa-users "></i> Afficher les Étudiants</a>
+                </li>
                 <li class="nav-item <?php if($page=='adduser'){echo('active');} ?>">
                     <a class="nav-link" href="/student/create"><i class="fa fa-fw fa-users "></i> Ajouter un Étudiant</a>
                 </li>

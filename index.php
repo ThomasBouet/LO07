@@ -12,10 +12,12 @@ $router->map('GET','/', '/views/home.php', 'home');
 $router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
 $router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
 
+$router->map('GET','/student', '/views/student/list.php', 'student-list');
+
 $router->map('GET','/student/create', '/views/student/create.php', 'student-create');
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
 
-$router->map('GET','/ue', '/views/ue/show.php', 'ue-show');
+$router->map('GET','/ue', '/views/ue/list.php', 'ue-show');
 $router->map('GET','/ue/create', '/views/ue/create.php', 'ue-create');
 $router->map('POST','/ue/create', '/include/ue_action.php', 'ue-add');
 
