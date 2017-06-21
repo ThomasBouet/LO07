@@ -14,6 +14,7 @@ $router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
 
 $router->map('GET','/student', '/views/student/list.php', 'student-list');
 $router->map( 'GET', '/student/[i:id]', '/views/student/show.php','student-show');
+$router->map( 'GET', '/student/[i:id]/[i:cursus]', '/views/cursus/show.php','cursus-show');
 
 $router->map('GET','/student/create', '/views/student/create.php', 'student-create');
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
@@ -21,14 +22,6 @@ $router->map('POST','/student/create', '/include/stud_action.php', 'student-add'
 $router->map('GET','/ue', '/views/ue/list.php', 'ue-show');
 $router->map('GET','/ue/create', '/views/ue/create.php', 'ue-create');
 $router->map('POST','/ue/create', '/include/ue_action.php', 'ue-add');
-
-// Special (payments, ajax processing, etc)
-//$router->map('GET','/charge/[*:customer_id]/','charge.php','charge');
-//$router->map('GET','/pay/[*:status]/','payment_results.php','payment-results');
-
-// API Routes
-//$router->map('GET','/api/[*:key]/[*:name]/', 'json.php', 'api');
-/* Match the current request */
 
 $match = $router->match();
 
@@ -39,4 +32,3 @@ else {
     header("HTTP/1.0 404 Not Found");
     require __DIR__  . '/views/home.php';
 }
-?>
