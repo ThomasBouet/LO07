@@ -11,7 +11,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <form method="post" action="include/csv_action.php" enctype="multipart/form-data">
+        <form method="post" action="../include/csv_action.php" enctype="multipart/form-data">
             
             Fichier : <input type='file' id='csv' name='csv' accept=".csv"> <br/>
             <input type="submit" value="Envoyer">

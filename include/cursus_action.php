@@ -5,7 +5,7 @@ require_once 'bibliotheque.php';
 
 $etu = $_POST["etu"];
 
-$sql="SELECT MAX(IdParcours) FROM ElemForm";
+$sql="SELECT MAX(IdParcours) FROM ElemForm WHERE IdEleve=$etu";
 $resu = mysqli_query($database, $sql);
 $parcourstab = mysqli_fetch_array($resu);
 $parcours= $parcourstab[0]+1;
