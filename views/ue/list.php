@@ -1,7 +1,6 @@
 <?php
 $page='uelist';
 require('layout/header.php');
-session_start();
 include_once('include/database.php');
 include_once('include/bibliotheque.php');
 include_once('include/elmt_formation.php');
