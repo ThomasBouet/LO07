@@ -3,13 +3,21 @@ $page='studentlist';
 require('layout/header.php');
 require_once('include/database.php');
 require_once('include/bibliotheque.php');
-$sql = "SELECT * FROM Etudiant WHERE IdEtu=".$match['params']['id'];
-$res = mysqli_query($database, $sql);
-$resultats = array();
-while ($row = mysqli_fetch_array($res)) {
-    $resultats[] = $row;
+$sql1 = "SELECT * FROM Etudiant WHERE IdEtu=".$match['params']['id'];
+$res1 = mysqli_query($database, $sql1);
+$students = array();
+while ($row = mysqli_fetch_array($res1)) {
+    $students[] = $row;
 }
-$resultats=$resultats[0];
+$student=$students[0];
+
+$sql2 = "SELECT DISTINCT `IdParcours` FROM `ElemForm` WHERE IdEleve =".$student['IdEtu']." ORDER BY `IdParcours` ASC";
+$res2 = mysqli_query($database, $sql2);
+$parcours = array();
+while ($row = mysqli_fetch_array($res2)) {
+    $parcours[] = $row[0];
+}
+var_dump($parcours);
 ?>
 
 <div class="content-wrapper py-3">
@@ -24,9 +32,9 @@ $resultats=$resultats[0];
             <div class="col col-2">
                 <div class="card card-outline-primary mb-3 text-center">
                     <h4 class="card-title">Informations sur l'Étudiant</h4>
-                    Nom: <?php echo($resultats['prenom']);?></br>
-                    Prénom: <?php echo($resultats['nom'])?></br>
-                    Numéro Étudiant: <?php echo($resultats['IdEtu']);?>
+                    Nom: <?php echo($student['prenom']);?></br>
+                    Prénom: <?php echo($student['nom'])?></br>
+                    Numéro Étudiant: <?php echo($student['IdEtu']);?>
                 </div>
             </div>
             <div class="col col-10">
@@ -35,7 +43,27 @@ $resultats=$resultats[0];
                         Cursus de l'Étudiant
                     </div>
                     <div class="card-block">
-
+                        <table class="table">
+                            <thead class="thead-default">
+                            <tr>
+                                <th>Nom du cursus</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach ($parcours as $table){
+                                $Id=$table;
+                                $etu=$student['IdEtu'];
+                                echo("
+                            <tr >
+                                <td>Cursus n°$Id</td>
+                                <td align='right'><a href='$etu/$Id' class='btn btn-primary'>Acceder</td>
+                            </tr>
+                        ");
+                            } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
