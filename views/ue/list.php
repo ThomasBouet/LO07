@@ -56,34 +56,7 @@ while ($row = mysqli_fetch_array($res)) {
                 </table>
             </div>
         </div>
-
-
-
-
-
-
-
-
     </div>
-    <script>
-        var counter = 0;
-        var limit = 30;
-        var original = document.getElementById('dynamicInputHidden');
-        function addInput() {
-            if (counter == limit) {
-                alert("You have reached the limit of adding " + counter + " inputs");
-            } else {
-                var original = document.getElementById('dynamicInputHidden');
-                var clone = original.cloneNode(true);
-                counter++;
-                clone.id = 'dynamicInput' + counter;
-                var id = clone.id;
-                clone.style = "display : initial;";
-                clone.name = 'clone' + counter;
-                original.parentNode.appendChild(clone);
-            }
-        }
-    </script>
 </div>
 </body>
 </html>
