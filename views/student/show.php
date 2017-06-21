@@ -17,7 +17,7 @@ $parcours = array();
 while ($row = mysqli_fetch_array($res2)) {
     $parcours[] = $row[0];
 }
-var_dump($parcours);
+$etu=$student['IdEtu'];
 ?>
 
 <div class="content-wrapper py-3">
@@ -26,7 +26,7 @@ var_dump($parcours);
         <ol class="breadcrumb">
             <li class="breadcrumb-item ">Projet LO07</li>
             <li class="breadcrumb-item ">Gestion des utilisateurs</li>
-            <li class="breadcrumb-item active">Affichage</li>
+            <li class="breadcrumb-item active">Affichage de <?php echo($student['prenom']." ".$student['nom']);?></li>
         </ol>
         <div class="row">
             <div class="col col-2">
@@ -36,6 +36,7 @@ var_dump($parcours);
                     Prénom: <?php echo($student['nom'])?></br>
                     Numéro Étudiant: <?php echo($student['IdEtu']);?>
                 </div>
+                <a href="<?php echo($etu)?>/create" class="btn btn-primary btn-lg btn-block">Ajouter un cursus</a>
             </div>
             <div class="col col-10">
                 <div class="card">
@@ -54,7 +55,6 @@ var_dump($parcours);
                             <?php
                             foreach ($parcours as $table){
                                 $Id=$table;
-                                $etu=$student['IdEtu'];
                                 echo("
                             <tr >
                                 <td>Cursus n°$Id</td>
