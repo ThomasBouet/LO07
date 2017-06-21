@@ -28,7 +28,7 @@ $num = array(1, 2, 3, 4, 5, 6);
                     <div class="form-group row">
                         <label for="Sigle" class="col-2 col-form-label">Sigle</label>
                         <div class="col-10">
-                            <input class="form-control" type="text" name="sigle" id="sigle">
+                            <input class="form-control" type="text" name="sigle" id="sigle" required>
                         </div>
                     </div>
                     <div class="form-group row">
