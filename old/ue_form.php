@@ -83,17 +83,7 @@ echo("</table>
 
 
 
-echo("
- 
- 
- <form method=\"POST\" action=\"include/ue_action.php\">
-     <h1> Ajout de nouvelles UEs</h1>
-    <div id='container'>
-         <div id=\"dynamicInputHidden\" style=\"display : none;\"> </br>
-             <fieldset name=\"fieldset\">
-                 Sigle <input type=\"text\" name=\"sigle[]\" required> </br>
-
-                Catégorie\""); echo(genereSelect($cat, 'categorie[]', 'categorie')); echo("</br>
+echo("); echo(genereSelect($cat, 'categorie[]', 'categorie')); echo("</br>
                 Affectation"); echo(genereSelect($affectation, 'affectation[]', 'affectation')); echo(" </br>
                 Crédits "); echo(genereSelect($num, 'credits[]', 'credits')); echo(" </br>
                 Description <input type=\"text\" name=\"desc[]\"> </br>

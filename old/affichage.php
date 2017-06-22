@@ -91,7 +91,7 @@ if (isset($_POST['parcours'])) {
     }
     ?>
 </table>
-<form method="post" action="include/rgmt_action.php">
+<form method="post" action="../include/rgmt_action.php">
     <select name="choix">
         <option value="actuel">Réglement actuel</option>
         <option value="futur">Réglement futur</option>
@@ -105,27 +105,23 @@ if (isset($_POST['parcours'])) {
 <?php
 if (!empty($_SESSION)) {
     echo "Voulez-vous supprimer ce parcours ?";
-    echo "<form method='post' action='include/cursus_supr.php'> 
-                <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+    echo " value=\"" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='SUPPRIMER'>
                 </form>";
     echo "Voulez-vous modifier ce parcours ?";
-    echo "<form method='post' action='include/cursus_modif.php'> 
-                <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+    echo " value=\"" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='MODIFIER'>
                 </form>";
     echo "Voulez-vous sauvegarder ce parcours ?";
-    echo "<form method='post' action='include/csv_export.php'> 
-                <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+    echo " value=\"" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='SAUVEGARDER'>
                 </form>";
 
     echo "Voulez-vous dupliquer ce parcours ?";
-    echo "<form method='post' action='include/cursus_dup.php'> 
-                <input type=\"hidden\" name=\"etu\" value=" . $_SESSION["idetu"] . ">
+    echo " value=\"" . $_SESSION["idetu"] . ">
                 <input type=\"hidden\" name=\"cursus\" value=" . $_SESSION["parcours"] . "> 
                 <input type='submit' value='DUPLIQUER'>
                 </form>";
