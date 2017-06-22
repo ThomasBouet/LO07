@@ -113,7 +113,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                 </div>
                 <div class="modal-body">
                     <form method="post" action="../include/csv_action.php" enctype="multipart/form-data">
-                        Fichier : <input type='file' id='csv' name='csv' accept=".csv"> <br/>
+                        Fichier : <input type='file' id='csv' name='csv' accept=".csv" required> <br/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
