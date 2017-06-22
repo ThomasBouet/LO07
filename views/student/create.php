@@ -13,7 +13,8 @@ include('layout/header.php');
             <!-- Breadcrumbs -->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item ">Projet LO07</li>
-                <li class="breadcrumb-item active">Création d'un cursus</li>
+                <li class="breadcrumb-item ">Gestion des utilisateurs</li>
+                <li class="breadcrumb-item active">Ajout</li>
             </ol>
             <?php flash( 'status' ); ?>
             <div class="card">

@@ -12,7 +12,7 @@
         $resultat=mysqli_query($database,$requete);
         if ($resultat){
             flash( 'status', 'Utilisateur ajouté avec <strong>succès</strong>!','alert alert-success');
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: ' . '/student/' . $IdEtu);
         }
         else {
             flash( 'status', '<strong>Mince Alors!</strong> Quelque chose c\'est mal passé (Mysql)','alert alert-danger');
