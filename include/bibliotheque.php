@@ -77,7 +77,7 @@ function genereSelectMult($tab,$name,$id){
 
 
 function selectdata ($select,$table,$database){
-    $sql = "SELECT `$select` FROM `$table`";
+    $sql = "SELECT `$select` FROM `$table` ORDER BY `$select` ASC";
     $res = mysqli_query($database, $sql);
     $resultats=array();
     while ($row = mysqli_fetch_array($res))
