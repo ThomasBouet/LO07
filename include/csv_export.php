@@ -34,8 +34,8 @@ require_once 'bibliotheque.php';
 require_once 'recup.php';
 require_once 'database.php';
 
-$etuid = $_POST["etu"];
-$tab = recupParours($etuid, $_POST["cursus"], $database);
+$etuid = $match['params']['id'];
+$tab = recupParours($etuid, $match['params']['cursus'], $database);
 $r = "SELECT nom,prenom,admission,filiere FROM Etudiant WHERE  IdEtu = " . $etuid;
 $result = mysqli_query($database, $r);
 $etu = array();
