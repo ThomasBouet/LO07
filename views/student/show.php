@@ -50,7 +50,7 @@ $etu=$student['IdEtu'];
                             <?php
                                 if(count($parcours)==0){
                                     echo('
-                                    <div class="card card-inverse card-info mb-3 text-center">
+                                    <div class="card card-inverse card-info text-center">
                                         <div class="card-block">
                                             <blockquote class="card-blockquote">
                                                 Aucun cursus enregistré pour cet étudiant
