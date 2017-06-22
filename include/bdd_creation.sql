@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 15 Juin 2017 à 14:43
+-- Généré le :  Jeu 22 Juin 2017 à 02:42
 -- Version du serveur :  5.6.35-1~dotdeb+7.1
 -- Version de PHP :  5.6.5
 
@@ -47,17 +47,6 @@ INSERT INTO `Branche` (`IdBr`, `desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Br_Ue`
---
-
-CREATE TABLE IF NOT EXISTS `Br_Ue` (
-  `Id_Br` varchar(4) NOT NULL,
-  `Id_Ue` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `Categorie_UE`
 --
 
@@ -72,8 +61,9 @@ CREATE TABLE IF NOT EXISTS `Categorie_UE` (
 
 INSERT INTO `Categorie_UE` (`IdCat`, `desc`) VALUES
 ('CS', 'connaissance scientifique'),
+('CT', 'humanité et technologies'),
 ('EC', 'expression et communication'),
-('HT', 'humanité et technologies'),
+('HP', ' '),
 ('ME', 'management de l''entreprise'),
 ('NPML', 'Bulats anglais'),
 ('SE', ''),
@@ -96,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `Cursus` (
 --
 
 INSERT INTO `Cursus` (`IdCusus`, `desc`) VALUES
+('BR', 'Branche'),
 ('FCBR', 'fin de cursus de branche'),
 ('TC', 'tronc commun'),
 ('TCBR', 'tronc commun de branche'),
@@ -111,13 +102,14 @@ CREATE TABLE IF NOT EXISTS `ElemForm` (
   `IdEleve` int(7) NOT NULL,
   `sem_seq` int(2) NOT NULL,
   `sem_label` varchar(6) NOT NULL,
-  `sigle` varchar(4) NOT NULL,
+  `sigle` varchar(10) NOT NULL,
   `utt` varchar(1) NOT NULL,
   `profil` varchar(1) NOT NULL,
   `creditobt` int(2) NOT NULL,
   `resultat` varchar(1) NOT NULL,
-  `IdParcours` int(1) NOT NULL
+  `IdParcours` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -132,6 +124,7 @@ CREATE TABLE IF NOT EXISTS `Etudiant` (
   `admission` varchar(2) NOT NULL,
   `filiere` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -189,13 +182,6 @@ CREATE TABLE IF NOT EXISTS `Ue` (
   `cat` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `Ue`
---
-
-INSERT INTO `Ue` (`IdUe`, `desc`, `credit`, `affectation`, `cat`) VALUES
-('LO07', '', 6, 'TCBR', 'TM'),
-('PHYS04', '', 6, 'TC', 'CS');
 
 --
 -- Index pour les tables exportées
@@ -206,12 +192,6 @@ INSERT INTO `Ue` (`IdUe`, `desc`, `credit`, `affectation`, `cat`) VALUES
 --
 ALTER TABLE `Branche`
   ADD PRIMARY KEY (`IdBr`);
-
---
--- Index pour la table `Br_Ue`
---
-ALTER TABLE `Br_Ue`
-  ADD PRIMARY KEY (`Id_Br`,`Id_Ue`), ADD KEY `fk_ue` (`Id_Ue`);
 
 --
 -- Index pour la table `Categorie_UE`
@@ -229,7 +209,7 @@ ALTER TABLE `Cursus`
 -- Index pour la table `ElemForm`
 --
 ALTER TABLE `ElemForm`
-  ADD PRIMARY KEY (`IdEleve`,`sem_seq`,`sigle`), ADD UNIQUE KEY `IdParcours` (`IdParcours`), ADD KEY `fk_sigle` (`sigle`);
+  ADD PRIMARY KEY (`IdEleve`,`sem_seq`,`sigle`,`IdParcours`), ADD KEY `fk_sigle` (`sigle`);
 
 --
 -- Index pour la table `Etudiant`
@@ -252,13 +232,6 @@ ALTER TABLE `Ue`
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `Br_Ue`
---
-ALTER TABLE `Br_Ue`
-ADD CONSTRAINT `fk2_br` FOREIGN KEY (`Id_Br`) REFERENCES `Branche` (`IdBr`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `fk_ue` FOREIGN KEY (`Id_Ue`) REFERENCES `Ue` (`IdUe`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `ElemForm`
