@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page='studentlist';
 require('layout/header.php');
 require_once('include/database.php');
@@ -39,6 +40,7 @@ $etu=$student['IdEtu'];
                 <a href="/cursus/create" class="btn btn-primary btn-lg btn-block">Ajouter un cursus</a>
             </div>
             <div class="col col-10">
+                <?php flash( 'status' ); ?>
                 <div class="card">
                     <div class="card-header">
                         Cursus de l'Étudiant
