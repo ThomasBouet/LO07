@@ -18,7 +18,7 @@ $num = array(1, 2, 3, 4, 5, 6);
             <li class="breadcrumb-item ">Gestion des UE</li>
             <li class="breadcrumb-item active">Ajout</li>
         </ol>
-
+        <?php flash( 'status' ); ?>
         <div class="card">
             <div class="card-header">
                 Ajout d'une UV

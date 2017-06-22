@@ -40,5 +40,14 @@ for ($i = 0; $i < count($_POST["ue"]); $i++) {
         mysqli_error($database);
     }
 }
+if ($resultat) {
+    flash( 'status', 'Parcours enregistre sur '.$parcours.' !','alert alert-success');
+    header('Location:' . '/student/' . $etu .'/'. $parcours);
+
+} else {
+    flash( 'status', '<strong>Mince Alors!</strong> Quelque chose c\'est mal passé (Mysql)','alert alert-danger');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    mysqli_error($database);
+}
 
 ?>
