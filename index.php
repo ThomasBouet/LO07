@@ -16,6 +16,7 @@ $router->map('GET','/cursus', function (){
 }, 'cursus-list');
 $router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
 $router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
+$router->map('POST','/cursus/csv','/include/csv_action.php','cursus-add-csv');
 
 $router->map('GET','/student', '/views/student/list.php', 'student-list');
 $router->map('GET', '/student/[i:id]', '/views/student/show.php','student-show');
