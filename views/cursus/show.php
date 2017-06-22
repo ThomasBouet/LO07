@@ -1,5 +1,6 @@
 <?php
 $page='studentlist';
+session_start();
 require('layout/header.php');
 require_once('include/database.php');
 require_once('include/bibliotheque.php');
@@ -57,7 +58,6 @@ foreach ($merged as $uv){
             <li class="breadcrumb-item"><a href="/student/<?php echo($match['params']['id'])?>"><?php echo($student['prenom']." ".$student['nom']);?></a></li>
             <li class="breadcrumb-item active">Affichage du cursus n°<?php echo($match['params']['cursus']);?></li>
         </ol>
-        <?php flash( 'status' ); ?>
         <div class="row">
             <div class="col col-2">
                 <div class="card card-outline-primary mb-3 text-center">
@@ -92,6 +92,7 @@ foreach ($merged as $uv){
                 </div>
             </div>
             <div class="col col-10">
+                <?php flash( 'status' ); ?>
                 <div class="card">
                     <div class="card-header">
                         Cursus n°<?php echo($match['params']['cursus'])?>
