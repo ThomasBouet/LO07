@@ -21,7 +21,7 @@ foreach ($elts as $elt){
     $elt['cat']=$types[0]['cat'];
     $merged[]=$elt;
 }
-$nbsemester=-1; //Nb de semestres effectues
+$nbsemester=1; //Nb de semestres effectues
 foreach ($merged as $elt){
     $eltval=intval($elt['sem_seq']);
     if($nbsemester<$eltval && in_array($elt['cat'],$todisplay)){
