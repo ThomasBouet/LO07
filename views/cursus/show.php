@@ -70,7 +70,9 @@ foreach ($merged as $uv){
                         Gestion du cursus
                     </div>
                     <div class="card-block">
-                        <a href="" class="btn btn-danger btn-lg btn-block">Supprimer</a>
+                        <form method="post" action="<?php echo($match['params']['cursus']);?>/delete">
+                            <button type="submit" class="btn-danger btn btn-lg btn-block">Supprimer</button>
+                        </form>
 <!--                        TODO have to be fixed-->
                     </div>
                 </div>

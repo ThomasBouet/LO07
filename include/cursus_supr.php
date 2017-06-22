@@ -1,8 +1,7 @@
 <?php
 include "database.php";
-$etu = $_POST["etu"];
-$cursus = $_POST["cursus"];
-
+$etu = $match['params']['id'];
+$cursus = $match['params']['cursus'];
 
 $sql = "DELETE FROM ElemForm WHERE IdEleve= '$etu' AND IdParcours='$cursus'";
 $resultat = mysqli_query($database, $sql);
