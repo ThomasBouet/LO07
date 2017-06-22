@@ -1,28 +1,3 @@
-<!DOCTYPE html>
-<head>
-    <script type="text/javascript">
-        function deleteCSV() {
-            var fname = document.getElementById('hidden').value;
-            var http = new XMLHttpRequest();
-            var url = "delete_file.php";
-            var params = "filename=" + fname;
-            http.open("POST", url, true);
-
-            //Send the proper header information along with the request
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            http.onreadystatechange = function () {//Call a function when the state changes.
-                if (http.readyState == 4 && http.status == 200) {
-                    console.log(http.responseText);
-                }
-            }
-            http.send(params);
-        }
-
-
-    </script>
-</head>
-<body>
 <?php
 /**
  * Created by PhpStorm.
@@ -46,9 +21,4 @@ while ($row = mysqli_fetch_array($result)) {
 }
 $etudiant = new Etudiant($etuid, $etu[0], $etu[1], $etu[2], $etu[3]);
 saveCSV($tab, $etudiant, $etuid);
-echo "<a href='reglements/" . $etuid . ".csv'><h1>Télécharger le parcours</h1></a>";
-echo "<input type='hidden' name='hidden' id='hidden' value='$etuid.csv'>";
-?>
-<input type='button'  value='RETOUR' onclick='deleteCSV(); document.location.href="../index.php"; '>
-</body>
-</html>
+header('Location:' . '/include/file_csv/' . $etuid . '.csv');

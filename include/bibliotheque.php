@@ -4,7 +4,7 @@ require_once 'elmt_formation.php';
 require_once 'database.php';
 
 function saveCSV($tab,$etu,$nom){
-    $filename = "file_csv/".$nom.".csv";
+    $filename = __DIR__ . "/file_csv/".$nom.".csv";
     if(!file_exists($filename)){
         touch ($filename);
             $ligne = "ID;";
