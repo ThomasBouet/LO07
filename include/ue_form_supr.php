@@ -12,8 +12,11 @@ foreach ($ues as $ue) {
     $resultat = mysqli_query($database, $sql);
     if ($resultat) {
         echo("Ue effacée avec succès !");
+        flash( 'status', '<strong>Succès</strong>! L\'UE '.$ue.' a bien été suppprimée','alert alert-success');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        echo("non");
+        flash( 'status', '<strong>Erreur!</strong>','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         mysqli_error($database);
     }
 }

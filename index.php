@@ -35,6 +35,7 @@ $router->map('GET','/student/create', '/views/student/create.php', 'student-crea
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
 
 $router->map('GET','/ue', '/views/ue/list.php', 'ue-show');
+$router->map('POST','/ue', '/include/ue_form_supr.php', 'ue-del');
 $router->map('GET','/ue/create', '/views/ue/create.php', 'ue-create');
 $router->map('POST','/ue/create', '/include/ue_action.php', 'ue-add');
 

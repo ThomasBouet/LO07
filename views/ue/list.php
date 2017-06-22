@@ -25,6 +25,7 @@ while ($row = mysqli_fetch_array($res)) {
             <li class="breadcrumb-item">Gestion des UE</li>
             <li class="breadcrumb-item active">Affichage des UE</li>
         </ol>
+        <?php flash( 'status' ); ?>
         <div class="card">
             <div class="card-block">
                 <table class="table">
@@ -34,6 +35,7 @@ while ($row = mysqli_fetch_array($res)) {
                         <th>Catégorie</th>
                         <th>Affectation</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +51,11 @@ while ($row = mysqli_fetch_array($res)) {
                                 <td>$categorie</td>
                                 <td>$affect</td>
                                 <td>$desc</td>
+                                <form action='' method='post'>
+                                    <input id='ue' name='ue[]' value=$Id type='hidden'>
+                                    <td align='right'><button type='submit' class='btn btn-danger'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i>
+                                        </button></td>
+                                </form>
                             </tr>
                         ");
                     } ?>
