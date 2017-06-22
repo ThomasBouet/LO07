@@ -37,7 +37,7 @@ $etu=$student['IdEtu'];
                     Prénom: <?php echo($student['nom'])?></br>
                     Numéro Étudiant: <?php echo($student['IdEtu']);?>
                 </div>
-                <a href="/cursus/create" class="btn btn-primary btn-lg btn-block">Ajouter un cursus</a>
+                <a href="<?php echo($student['IdEtu'])?>/create" class="btn btn-primary btn-lg btn-block">Ajouter un cursus</a>
             </div>
             <div class="col col-10">
                 <?php flash( 'status' ); ?>

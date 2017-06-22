@@ -24,10 +24,22 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                         <div class="row">
                             <div class="col col-lg-5">
                                 <div class="form-group row">
-                                    <label for="etu" class="col-4 col-form-label">Numéro étudiant:</label>
-                                    <div class="col-6">
-                                        <?php echo(genereSelect($nom,"etu","etu"));?>
-                                    </div>
+                                    <?php
+                                    $etu=flash( 'data' );
+                                    if(isset($etu)){
+                                        echo('<label for="etu" class="col-4">Numéro étudiant:</label>');
+                                        echo('<div class="col-6 ">'.$etu.'</div>');
+                                        echo('<input type="hidden" name="etu" value="'.$etu.'"/>');
+                                    } else {
+                                        echo('
+                                            <label for="etu" class="col-4 col-form-label">Numéro étudiant:</label>
+                                            <div class="col-6">
+                                        '
+                                        .genereSelect($nom, "etu", "etu")
+                                        .'</div>'
+                                        );
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="col col-lg-7 text-right">

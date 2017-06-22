@@ -12,7 +12,7 @@ $router->map('GET','', '/views/home.php', 'home');
 
 $router->map('GET','/cursus', function (){
     flash( 'status', 'Pour afficher un cursus, merci de selectionner un utilisateur ci-dessous','alert alert-info');
-    header('Location:'.$_SERVER['HTTP_REFERER'].'student');
+    header('Location: student');
 }, 'cursus-list');
 $router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
 $router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
@@ -20,6 +20,10 @@ $router->map('POST','/cursus/csv','/include/csv_action.php','cursus-add-csv');
 
 $router->map('GET','/student', '/views/student/list.php', 'student-list');
 $router->map('GET', '/student/[i:id]', '/views/student/show.php','student-show');
+$router->map('GET', '/student/[i:id]/create', function ($id){
+    flash( 'data', $id);
+    header('Location:/cursus/create');
+});
 $router->map('GET', '/student/[i:id]/[i:cursus]', '/views/cursus/show.php','cursus-show');
 
 $router->map('GET', '/student/[i:id]/[i:cursus]/edit', '/views/cursus/edit.php','cursus-edit');
