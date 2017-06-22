@@ -75,7 +75,7 @@ foreach ($merged as $uv){
                             <a href="<?php echo($match['params']['cursus']);?>/edit" class="btn-secondary btn btn-lg">Modifier</a >
                             <a href="<?php echo($match['params']['cursus']);?>/duplicate" class="btn-secondary btn btn-lg">Dupliquer</a >
                             <a href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg">Télécharger</a >
-                            <a href="<?php echo($match['params']['cursus']);?>/delete" class="btn-danger btn btn-lg">Supprimer</a >
+                            <a href="" data-toggle="modal" data-target="#confirm" class="btn-danger btn btn-lg">Supprimer</a >
                         </div>
                     </div>
                 </div>
@@ -173,6 +173,28 @@ foreach ($merged as $uv){
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Confirmer la suppression du cursus?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <a class="btn btn-danger" href="<?php echo($match['params']['cursus']);?>/delete">Supprimer</a>
             </div>
         </div>
     </div>
