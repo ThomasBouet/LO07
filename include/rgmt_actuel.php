@@ -1,5 +1,6 @@
 <?php
 require_once 'elmt_formation.php';
+require_once 'recup.php';
 /*
  * Created by PhpStorm.
  * User: Christine
@@ -156,7 +157,5 @@ function actuel_rgmt($tab)
         echo "<h1>PROFIL REJETE</h1> </br>";
     }
 }
-
-?>
-</body>
-
+$tab = recupParours($match['params']['id'], $match['params']['cursus'], $database);
+actuel_rgmt($tab);

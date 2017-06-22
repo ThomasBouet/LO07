@@ -1,5 +1,6 @@
 <?php
 require_once 'elmt_formation.php';
+require_once 'recup.php';
 /**
  * Created by PhpStorm.
  * User: Christine
@@ -39,7 +40,7 @@ function futur_rgmt($tab)
             if ($cat == 'ME' && $affectation == 'BR') {
                 $MEbr+= $cred;
             }
-            if (($value->getCategorie == 'CS' && $utt) || ($value->getCategorie == 'TM' && $utt)) {
+            if (($cat == 'CS' && $utt =='Y') || ($cat == 'TM' && $utt == 'Y')) {
                 $UTTCSTM+= $cred;
             }
             if ($cat == 'SE') {
@@ -165,6 +166,5 @@ function futur_rgmt($tab)
         echo "<h1>PROFIL REJETE</h1> </br>";
     }
 }
-?>
-</body>
-
+$tab = recupParours($match['params']['id'], $match['params']['cursus'], $database);
+futur_rgmt($tab);
