@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_array($res)) {
             <li class="breadcrumb-item">Gestion des utilisateurs</li>
             <li class="breadcrumb-item active">Affichage</li>
         </ol>
-
+        <?php flash( 'status' ); ?>
         <div class="card">
             <div class="card-block">
                 <table class="table">

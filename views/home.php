@@ -7,10 +7,10 @@
                 <li class="breadcrumb-item active">Accueil</li>
             </ol>
             <div class="card-block">
-                <a class="btn btn-default btn-lg btn-block" href="/create"><i class="fa fa-wrench fa-lg" aria-hidden="true"></i>
+                <a class="btn btn-default btn-lg btn-block" href="/cursus/create"><i class="fa fa-wrench fa-lg" aria-hidden="true"></i>
                     Création d'un cursus</a>
                 <hr />
-                <a class="btn btn-default btn-lg btn-block" href="/create/students"><i class="fa fa-table fa-lg" aria-hidden="true"></i>
+                <a class="btn btn-default btn-lg btn-block" href="/cursus"><i class="fa fa-table fa-lg" aria-hidden="true"></i>
                     Visualisation d'un cursus
                 </a>
             </div>

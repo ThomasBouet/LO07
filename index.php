@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: text/html");
 include dirname(__FILE__) . '/include/AltoRouter.php';
+include dirname(__FILE__) . '/include/bibliotheque.php';
 $router = new AltoRouter();
 $router->setBasePath('');
 
@@ -9,6 +10,10 @@ $router->setBasePath('');
 
 $router->map('GET','', '/views/home.php', 'home');
 
+$router->map('GET','/cursus', function (){
+    flash( 'status', 'Pour afficher un cursus, merci de selectionner un utilisateur ci-dessous','alert alert-info');
+    header('Location:'.$_SERVER['HTTP_REFERER'].'student');
+}, 'cursus-list');
 $router->map('GET','/cursus/create', '/views/cursus/create.php', 'cursus-create');
 $router->map('POST','/cursus/create','/include/cursus_action.php','cursus-add');
 
@@ -27,7 +32,9 @@ $router->map('POST','/ue/create', '/include/ue_action.php', 'ue-add');
 
 $match = $router->match();
 
-if($match) {
+if($match && is_callable( $match['target'] )){
+    call_user_func_array( $match['target'], $match['params'] );
+} elseif($match) {
     require __DIR__ . $match['target'];
 }
 else {
