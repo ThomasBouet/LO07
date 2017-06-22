@@ -30,6 +30,7 @@ $nom = selectdata("IdEtu","Etudiant",$database);
                                 </div>
                             </div>
                             <div class="col col-lg-7 text-right">
+                                <a class="btn btn-secondary" data-toggle="modal" data-target="#modalcsv">Envoyer un CSV</a>
                                 <a href="/student/create" class="btn btn-secondary">Ajouter un Étudiant</a>
                             </div>
                         </div>
@@ -99,5 +100,30 @@ $nom = selectdata("IdEtu","Etudiant",$database);
             });
         });
     </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalcsv" tabindex="-1" role="dialog" aria-labelledby="modalcsv" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Envoi d'un CSV</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="../include/csv_action.php" enctype="multipart/form-data">
+                        Fichier : <input type='file' id='csv' name='csv' accept=".csv"> <br/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
