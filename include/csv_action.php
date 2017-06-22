@@ -48,11 +48,11 @@ and open the template in the editor.
 
         if($t[1]=='csv'){
                 $tab_ue = array();
-                echo " Ceci est un fichier .csv ! Hourra !";
+//                echo " Ceci est un fichier .csv ! Hourra !";
                 $fichier = basename($file['name']);
                 if(move_uploaded_file($file['tmp_name'], "file_csv/".$fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 {
-                    echo '<br/>Upload effectuée avec succès !<br/>';
+//                    echo '<br/>Upload effectuée avec succès !<br/>';
                     $etu = new Etudiant("","","","","");
                     foreach(readCSV($file['name']) as $ligne){
                         switch($ligne[0]){
@@ -87,10 +87,12 @@ and open the template in the editor.
                         }
                     }
                 }else{
-                    echo '<br/>Uploade non effectuée !<br/>';
+                    flash( 'status', '<strong>Mince Alors!</strong> Echec de l\'upload','alert alert-danger');
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
         }else{
-            echo "Ceci n'est pas un fichier .csv ! C'est un fichier .$t[1] ";
+            flash( 'status', '<strong>Mince Alors!</strong> Ceci n\'est pas un fichier .csv ! C\'est un fichier ' .$t[1],'alert alert-danger');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         echo "<input type='hidden' value='".$file['name'].".csv' id='hidden'>";
 
@@ -106,7 +108,7 @@ and open the template in the editor.
         $requete="INSERT INTO `Etudiant` VALUES ('$IdEtu','$nom','$prenom','$admission','$filiere')";
         $resultat=mysqli_query($database,$requete);
         if ($resultat){
-            echo("oui");
+//            echo("oui");
         }
         else {
             $verif=false;
@@ -118,10 +120,11 @@ and open the template in the editor.
                 }
             }
             if ($verif=true){
-                echo("oui pour l'étudiant ! ");
+//                echo("oui pour l'étudiant ! ");
             }
             else{
-                echo ("non pour l'étu..");
+                flash( 'status', '<strong>Mince Alors!</strong> L\'utilisateur n\'existe pas','alert alert-danger');
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
                 mysqli_error($database);
             }
 
@@ -156,10 +159,12 @@ and open the template in the editor.
 
             }
             if ($verif_ue > 0){
-                echo ("ça s'est mal passé pour les ues ");
+                flash( 'status', '<strong>Mince Alors!</strong> Probléme avec une UE','alert alert-danger');
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+//                echo ("ça s'est mal passé pour les ues ");
             }
             else {
-                echo ("oui pour les ues ! ");
+//                echo ("oui pour les ues ! ");
                 mysqli_error($database);
 
             }
@@ -198,9 +203,13 @@ and open the template in the editor.
        }
 
         if ($verif_parcours) {
-            echo("parcours enregistre sur $parcours");
+//            echo("parcours enregistre sur $parcours");
+            flash( 'status', '<strong>Parcours enregistré</strong> avec success','alert alert-success');
+            header('Location:' . '/student/' . $IdEtu . '/' . $parcours);
         } else {
             echo("erreur");
+            flash( 'status', '<strong>Mince Alors!</strong> Erreur','alert alert-danger');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
             mysqli_error($database);
         }
 
