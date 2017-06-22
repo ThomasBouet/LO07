@@ -10,6 +10,7 @@ require_once 'recup.php';
 function actuel_rgmt($tab)
 {
     $SE = $NPML = FALSE;
+    $message='';
     $CSbr = $TMbr = $ECbr = $MEbr = $CTbr = $STtcbr = $STfcbr = $CSTMtcbr = $CSTMfcbr = $UTTCSTM = $final = 0;
     foreach ($tab as $value) {
         $cat = $value->getCategorie();
@@ -56,111 +57,113 @@ function actuel_rgmt($tab)
 
     }
     if ($NPML) {
-        echo "NPML validé </br></br>";
+//        echo "NPML validé </br></br>";
         $final++;
     } else {
-        echo "NPML non validé </br></br>";
+        $message=$message."<li>NPML non validé</li>";
     }
     if ($SE) {
-        echo "SE validé </br></br>";
+//        echo "SE validé </br></br>";
         $final++;
     } else {
-        echo "SE non validé </br></br>";
+        $message=$message."<li>SE non validé </li>";
     }
     if ($CSTMtcbr >= 54) {
-        echo "Vous avez validé assez de crédits de TM en TCBR </br>";
+//        echo "Vous avez validé assez de crédits de TM en TCBR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en TCBR </br>
-        Il vous manque " . (54 - $CSTMtcbr) . " </br>
-        Vous n'en avez que $CSTMtcbr /54 </br></br>";
+        $message=$message."<li>Vous n'avez pas validé assez de crédits de CS et/ou de TM en TCBR. <br/>
+        Il vous manque " . (54 - $CSTMtcbr) . " <br/>
+        Vous n'en avez que $CSTMtcbr /54 </li>";
     }
     if ($CSTMfcbr >= 30) {
-        echo "Vous avez validé assez de crédits de TM en FCBR </br>";
+//        echo "Vous avez validé assez de crédits de TM en FCBR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en FCBR </br>
-        Il vous manque " . (30 - $CSTMfcbr) . " </br>
-        Vous n'en avez que $CSTMfcbr /30 </br></br>";
+        $message=$message."<li>Vous n'avez pas validé assez de crédits de CS et/ou de TM en FCBR <br/>
+        Il vous manque " . (30 - $CSTMfcbr) . " <br/>
+        Vous n'en avez que $CSTMfcbr /30 </li>";
     }
     if ($CSbr >= 30) {
-        echo "Vous avez validé assez de crédits de CS en BR </br>";
+//        echo "Vous avez validé assez de crédits de CS en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits CS en BR </br>
-        Il vous en manque " . (30 - $CSbr) . " </br>
-        Vous n'en avez que $CSbr /30 </br></br>";
+        $message=$message."<li>Vous n'avez pas validé assez de crédits CS en BR <br/>
+        Il vous en manque " . (30 - $CSbr) . " <br/>
+        Vous n'en avez que $CSbr /30 </li>";
     }
 
 
     if ($TMbr >= 30) {
-        echo "Vous avez validé assez de crédits de TM en BR </br>";
+//        echo "Vous avez validé assez de crédits de TM en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits TM en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits TM en BR </br>
         Il vous en manque " . (30 - $TMbr) . " </br>
-        Vous n'en avez que $TMbr /30 </br></br>";
+        Vous n'en avez que $TMbr /30 </li>";
     }
     if ($STtcbr >= 30) {
-        echo "Vous avez validé assez de crédits de ST en TCBR </br>";
+//        echo "Vous avez validé assez de crédits de ST en TCBR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits ST en TCBR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits ST en TCBR </br>
         Il vous en manque " . (30 - $STtcbr) . " </br>
-        Vous n'en avez que $STtcbr /30 </br></br>";
+        Vous n'en avez que $STtcbr /30 </li>";
     }
     if ($STfcbr >= 30) {
-        echo "Vous avez validé assez de crédits de ST en FCBR </br>";
+//        echo "Vous avez validé assez de crédits de ST en FCBR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits ST en FCBR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits ST en FCBR </br>
         Il vous en manque " . (30 - $STfcbr) . " </br>
-         Vous n'en avez que $STfcbr /30 </br></br>";
+         Vous n'en avez que $STfcbr /30 </li>";
     }
     if ($ECbr >= 12) {
-        echo "Vous avez validé assez de crédits de EC en BR </br>";
+//        echo "Vous avez validé assez de crédits de EC en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits EC en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits EC en BR </br>
         Il vous en manque " . (12 - $ECbr) . " </br>
-         Vous n'en avez que $ECbr /12 </br></br>";
+         Vous n'en avez que $ECbr /12 </li>";
     }
     if ($MEbr >= 4) {
-        echo "Vous avez validé assez de crédits de ME en BR </br>";
+//        echo "Vous avez validé assez de crédits de ME en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits ME en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits ME en BR </br>
         Il vous en manque " . (4 - $MEbr) . " </br>
-         Vous n'en avez que $MEbr /4 </br></br>";
+         Vous n'en avez que $MEbr /4 </li>";
     }
     if ($CTbr >= 4) {
-        echo "Vous avez validé assez de crédits de CT en BR </br>";
+//        echo "Vous avez validé assez de crédits de CT en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits ME en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits ME en BR </br>
         Il vous en manque " . (4 - $CTbr) . " </br>
-         Vous n'en avez que $CTbr /30 </br></br>";
+         Vous n'en avez que $CTbr /30 </li>";
     }
     if ($MEbr + $CTbr >= 16) {
-        echo "Vous avez validé assez de crédits de CT et de ME en BR </br>";
+//        echo "Vous avez validé assez de crédits de CT et de ME en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits ME et/ou de CT en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits ME et/ou de CT en BR </br>
         Il vous en manque " . (16 - $CTbr - $MEbr) . " </br>
-         Vous n'en avez que $CTbr /16 </br></br>";
+         Vous n'en avez que $CTbr /16 </li>";
     }
     if ($UTTCSTM >= 60) {
-        echo "Vous avez validé assez de crédits de CS et de TM à l'UTT en BR </br>";
+//        echo "Vous avez validé assez de crédits de CS et de TM à l'UTT en BR </br>";
         $final++;
     } else {
-        echo "Vous n'avez pas validé assez de crédits CS et/ou de TM à l'UTT en BR </br>
+        $message=$message."<li>Vous n'avez pas validé assez de crédits CS et/ou de TM à l'UTT en BR </br>
         Il vous en manque " . (60 - $UTTCSTM) . "</br>
-         Vous n'en avez que $UTTCSTM /60 </br></br>";
+         Vous n'en avez que $UTTCSTM /60 </li>";
     }
     if ($final == 13) {
-        echo "<h1>PROFIL VALIDE</h1> </br>";
+        flash( 'status', '<strong>Profil validé</strong>! Tout va bien, ce parcours respecte les regles','alert alert-success');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        echo "<h1>PROFIL REJETE</h1> </br>";
+        flash( 'status', '<strong>Profil rejeté!</strong><br/><ul>'.$message.'</ul>','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
 $tab = recupParours($match['params']['id'], $match['params']['cursus'], $database);
