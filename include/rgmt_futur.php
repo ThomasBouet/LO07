@@ -22,22 +22,25 @@ function futur_rgmt($tab)
             if (($cat == 'CS' && $affectation == 'FCBR') || ($cat == 'TM' && $affectation == 'FCBR')) {
                 $CSTMfcbr += $cred;
             }
-            if ($cat == 'TM'  && $affectation == 'BR') {
+            if (($cat == 'TM' && $affectation == 'BR')||($cat == 'TM' && $affectation == 'FCBR')||($cat == 'TM' && $affectation == 'TCBR')) {
                 $TMbr+= $cred;
             }
-            if ($cat == 'ST'  && $affectation == 'BR') {
+            if (($cat == 'CS' && $affectation == 'BR')||($cat == 'CS' && $affectation == 'FCBR')||($cat == 'CS' && $affectation == 'TCBR')) {
+                $CSbr+= $cred;
+            }
+            if ($cat == 'ST'  && $affectation == 'FCBR') {
                 $STfcbr+= $cred;
             }
-            if ($cat == 'ST'  && $affectation == 'BR') {
+            if ($cat == 'ST'  && $affectation == 'TCBR') {
                 $STtcbr+= $cred;
             }
-            if ($cat == 'HT'  && $affectation == 'BR') {
+            if (($cat == 'CT' && $affectation == 'BR')||($cat == 'CT' && $affectation == 'FCBR')||($cat == 'CT' && $affectation == 'TCBR')) {
                 $CTbr+= $cred;
             }
-            if ($cat == 'EC' && $affectation == 'BR') {
+            if (($cat == 'EC' && $affectation == 'BR')||($cat == 'EC' && $affectation == 'FCBR')||($cat == 'EC' && $affectation == 'TCBR')) {
                 $ECbr+= $cred;
             }
-            if ($cat == 'ME' && $affectation == 'BR') {
+            if (($cat == 'ME' && $affectation == 'BR')||($cat == 'ME' && $affectation == 'FCBR')||($cat == 'ME' && $affectation == 'TCBR')) {
                 $MEbr+= $cred;
             }
             if (($cat == 'CS' && $utt =='Y') || ($cat == 'TM' && $utt == 'Y')) {
@@ -49,7 +52,7 @@ function futur_rgmt($tab)
             if ($cat == 'NPML') {
                 $NPML = TRUE;
             }
-            if ($affectation == 'BR') {
+            if (($affectation == 'BR')||($affectation='TCBR')||($affectation='FCBR')) {
                 $somme = $somme + $cred;
             }
     }
@@ -66,7 +69,7 @@ function futur_rgmt($tab)
         echo "SE non validé </br></br>";
     }
     if ($CSTMtcbr >= 42) {
-        echo "Vous avez validé assez de crédits de TM en TCBR </br>";
+        echo "Vous avez validé assez de crédits de TM et de CS en TCBR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en TCBR </br>
@@ -74,7 +77,7 @@ function futur_rgmt($tab)
         Vous n'en avez que $CSTMtcbr /42 </br></br>";
     }
     if ($CSTMfcbr >= 18) {
-        echo "Vous avez validé assez de crédits de TM en FCBR </br>";
+        echo "Vous avez validé assez de crédits de TM et de CS en FCBR </br>";
         $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits de CS et/ou de TM en FCBR </br>
@@ -97,6 +100,15 @@ function futur_rgmt($tab)
         Il vous en manque " . (24 - $TMbr) . " </br>
         Vous n'en avez que $TMbr /24 </br></br>";
     }
+    if (($CSbr+$TMbr)>=84){
+        echo "Vous avez validé assez de crédits de TM et de CS en BR </br>";
+        $final++;
+    } else {
+        echo "Vous n'avez pas validé assez de crédits TM et de CS en BR </br>
+        Il vous en manque " . (84 - $TMbr - $CSbr) . " </br>
+        Vous n'en avez que $TMbr /24 </br></br>";
+    }
+    
     if ($STtcbr >= 30) {
         echo "Vous avez validé assez de crédits de ST en TCBR </br>";
         $final++;
@@ -155,6 +167,7 @@ function futur_rgmt($tab)
     }
     if ($somme >= 180) {
         echo "Vous avez validé assez de crédits </br>";
+        $final++;
     } else {
         echo "Vous n'avez pas validé assez de crédits </br>
         Il vous en manque " . (180 - $somme) . " </br>
@@ -163,7 +176,8 @@ function futur_rgmt($tab)
     if ($final == 15) {
         echo "<h1>PROFIL VALIDE</h1> </br>";
     } else {
-        echo "<h1>PROFIL REJETE</h1> </br>";
+        echo "<h1>PROFIL REJETE</h1> </br>";print_r($final);
+
     }
 }
 $tab = recupParours($match['params']['id'], $match['params']['cursus'], $database);
