@@ -22,22 +22,25 @@ function actuel_rgmt($tab)
         if (($cat == 'CS' && $affectation == 'FCBR') || ($cat == 'TM' && $affectation == 'FCBR')) {
             $CSTMfcbr += $credit;
         }
-        if ($cat == 'TM' && $affectation == 'BR') {
+        if (($cat == 'CS' && $affectation == 'TCBR')||($cat == 'CS' && $affectation == 'FCBR')||($cat == 'CS' && $affectation == 'BR')){
+            $CSbr += $credit;
+        }
+        if (($cat == 'TM' && $affectation == 'TCBR')||($cat == 'TM' && $affectation == 'FCBR')||($cat == 'TM' && $affectation == 'BR')){
             $TMbr += $credit;
         }
-        if ($cat == 'ST' && $affectation == 'BR') {
+        if ($cat == 'ST' && $affectation == 'FCBR') {
             $STfcbr += $credit;
         }
-        if ($cat == 'ST' && $affectation == 'BR') {
+        if ($cat == 'ST' && $affectation == 'TCBR') {
             $STtcbr += $credit;
         }
-        if ($cat == 'HT' && $affectation == 'BR') {
+        if (($cat == 'CT' && $affectation == 'BR')||($cat == 'CT' && $affectation == 'FCBR')||($cat == 'CT' && $affectation == 'TCBR')) {
             $CTbr += $credit;
         }
-        if ($cat == 'EC' && $affectation == 'BR') {
+        if (($cat == 'EC' && $affectation == 'BR')||($cat == 'EC' && $affectation == 'FCBR')||($cat == 'EC' && $affectation == 'TCBR')) {
             $ECbr += $credit;
         }
-        if ($cat == 'ME' && $affectation == 'BR') {
+        if (($cat == 'ME' && $affectation == 'BR')||($cat == 'ME' && $affectation == 'FCBR')||($cat == 'TM' && $affectation == 'TCBR')) {
             $MEbr += $credit;
         }
         if (($cat == 'CS' && $utt =='Y') || ($cat == 'TM' && $utt == 'Y')) {
@@ -49,6 +52,7 @@ function actuel_rgmt($tab)
         if ($cat == 'NPML') {
             $NPML = TRUE;
         }
+
 
     }
     if ($NPML) {
@@ -87,6 +91,8 @@ function actuel_rgmt($tab)
         Il vous en manque " . (30 - $CSbr) . " </br>
         Vous n'en avez que $CSbr /30 </br></br>";
     }
+
+
     if ($TMbr >= 30) {
         echo "Vous avez validé assez de crédits de TM en BR </br>";
         $final++;
