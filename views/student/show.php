@@ -47,23 +47,40 @@ $etu=$student['IdEtu'];
                     </div>
                     <div class="card-block">
                         <table class="table">
-                            <thead class="thead-default">
-                            <tr>
-                                <th>Nom du cursus</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
                             <?php
-                            foreach ($parcours as $table){
-                                $Id=$table;
-                                echo("
-                            <tr >
-                                <td>Cursus n°$Id</td>
-                                <td align='right'><a href='$etu/$Id' class='btn btn-primary'>Acceder</td>
-                            </tr>
-                        ");
-                            } ?>
+                                if(count($parcours)==0){
+                                    echo('
+                                    <div class="card card-inverse card-info mb-3 text-center">
+                                        <div class="card-block">
+                                            <blockquote class="card-blockquote">
+                                                Aucun cursus enregistré pour cet étudiant
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                    ');
+                                } else {
+                                    echo('
+                                    <thead class="thead-default">
+                                        <tr>
+                                            <th>Nom du cursus</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    ');
+
+                                    foreach ($parcours as $table) {
+                                        $Id = $table;
+                                        echo("
+                                    <tr >
+                                        <td>Cursus n°$Id</td>
+                                        <td align='right'><a href='$etu/$Id' class='btn btn-primary'>Acceder</td>
+                                    </tr>
+                                        ");
+                                    };
+                                    echo('</tbody>');
+                                }
+                                    ?>
                             </tbody>
                         </table>
                     </div>
