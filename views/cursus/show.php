@@ -57,6 +57,7 @@ foreach ($merged as $uv){
             <li class="breadcrumb-item"><a href="/student/<?php echo($match['params']['id'])?>"><?php echo($student['prenom']." ".$student['nom']);?></a></li>
             <li class="breadcrumb-item active">Affichage du cursus n°<?php echo($match['params']['cursus']);?></li>
         </ol>
+        <?php flash( 'status' ); ?>
         <div class="row">
             <div class="col col-2">
                 <div class="card card-outline-primary mb-3 text-center">
@@ -65,16 +66,28 @@ foreach ($merged as $uv){
                     Prénom: <?php echo($student['nom'])?></br>
                     Numéro Étudiant: <?php echo($student['IdEtu']);?>
                 </div>
-                <div class="card">
-                    <div class="card-header">
+                <div class="card mb-3">
+                    <div class="card-header text-center">
                         Gestion du cursus
                     </div>
-                    <div class="card-block">
-                        <a href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg btn-block">Télécharger</a>
+                    <div class="card-block text-center">
                         <form method="post" action="<?php echo($match['params']['cursus']);?>/delete">
-                            <button type="submit" class="btn-danger btn btn-lg btn-block">Supprimer</button>
+                            <div class="btn-group-vertical">
+                                <button href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg">Télécharger</button>
+                                <button type="submit" class="btn-danger btn btn-lg">Supprimer</button>
+                            </div>
                         </form>
-<!--                        TODO have to be fixed-->
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header text-center">
+                        Vérification du réglement
+                    </div>
+                    <div class="card-block text-center">
+                        <div class="btn-group-vertical">
+                            <a href="<?php echo($match['params']['cursus']);?>/verif1" class="btn-secondary btn btn-lg">Actuel</a>
+                            <a href="<?php echo($match['params']['cursus']);?>/verif2" class="btn-secondary btn btn-lg">Futur</a>
+                        </div>
                     </div>
                 </div>
             </div>

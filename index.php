@@ -23,6 +23,9 @@ $router->map('GET', '/student/[i:id]/[i:cursus]', '/views/cursus/show.php','curs
 $router->map('POST', '/student/[i:id]/[i:cursus]/delete', '/include/cursus_supr.php','cursus-del');
 $router->map('GET', '/student/[i:id]/[i:cursus]/export', '/include/csv_export.php','cursus-export');
 
+$router->map('GET', '/student/[i:id]/[i:cursus]/verif1', '/include/rgmt_actuel.php','cursus-verif1');
+$router->map('GET', '/student/[i:id]/[i:cursus]/verif2', '/include/rgmt_futur.php','cursus-verif2');
+
 $router->map('GET','/student/create', '/views/student/create.php', 'student-create');
 $router->map('POST','/student/create', '/include/stud_action.php', 'student-add');
 
