@@ -62,8 +62,8 @@ foreach ($merged as $uv){
             <div class="col col-2">
                 <div class="card card-outline-primary mb-3 text-center">
                     <h4 class="card-title">Informations sur l'Étudiant</h4>
-                    Nom: <?php echo($student['prenom']);?></br>
-                    Prénom: <?php echo($student['nom'])?></br>
+                    Nom: <?php echo($student['nom']);?></br>
+                    Prénom: <?php echo($student['prenom'])?></br>
                     Numéro Étudiant: <?php echo($student['IdEtu']);?>
                 </div>
                 <div class="card mb-3">
