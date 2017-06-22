@@ -25,7 +25,7 @@ $etu=$student['IdEtu'];
         <!-- Breadcrumbs -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item ">Projet LO07</li>
-            <li class="breadcrumb-item ">Gestion des utilisateurs</li>
+            <li class="breadcrumb-item "><a href="/student">Gestion des utilisateurs</a></li>
             <li class="breadcrumb-item active">Affichage de <?php echo($student['prenom']." ".$student['nom']);?></li>
         </ol>
         <div class="row">
