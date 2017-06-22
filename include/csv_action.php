@@ -41,12 +41,11 @@ and open the template in the editor.
         <?php
 
         if(!is_dir("file_csv/")) mkdir("./file_csv/");
-        //var_dump($_FILES);
+
         $file = $_FILES['csv'];
-        print_r($file);
-        //echo $file['name'];
+
         $t = explode('.', $file['name']);
-        //var_dump($t);
+
         if($t[1]=='csv'){
                 $tab_ue = array();
                 echo " Ceci est un fichier .csv ! Hourra !";
@@ -93,11 +92,8 @@ and open the template in the editor.
         }else{
             echo "Ceci n'est pas un fichier .csv ! C'est un fichier .$t[1] ";
         }
-        var_dump($etu);
-        var_dump($tab_ue);
         echo "<input type='hidden' value='".$file['name'].".csv' id='hidden'>";
 
-        var_dump("$etu->numero");
 
         // ===========================ENTRER TOUT ÇA DANS LA BDD !!!======================//
 
@@ -113,8 +109,22 @@ and open the template in the editor.
             echo("oui");
         }
         else {
-            echo ("non");
-            mysqli_error($database);
+            $verif=false;
+            $checketu = selectdata('IdEleve','ElemForm',$database);
+
+            for ($i=0;$i<count($checketu);$i++){
+                if ($checketu[$i]=$IdEtu){
+                    $verif=true;
+                }
+            }
+            if ($verif=true){
+                echo("oui pour l'étudiant ! ");
+            }
+            else{
+                echo ("non pour l'étu..");
+                mysqli_error($database);
+            }
+
         }
 
         //=================UE==============//
@@ -126,14 +136,34 @@ and open the template in the editor.
             $desc=' ';
             $requete = "INSERT INTO `Ue` VALUES ('$sigle','$desc','$credits','$affectation','$categorie')";
             $resultat = mysqli_query($database, $requete);
-            var_dump($requete);
-            if ($resultat) {
-                echo("oui");
-            } else {
-                echo("erreur");
-                mysqli_error($database);
+
+            //veriication//
+            $verif_ue=0;
+                if (!$resultat) {
+
+                    $checkue = selectdata('IdUe','Ue',$database);
+
+                    for ($i=0;$i<count($checkue);$i++){
+                        if ($checkue[$i]=$sigle){
+                        $verif_ue=0;
+                        }
+                        else{
+                            $verif_ue=$verif_ue+1;
+                        }
+
+                    }
+                }
+
             }
-        }
+            if ($verif_ue > 0){
+                echo ("ça s'est mal passé pour les ues ");
+            }
+            else {
+                echo ("oui pour les ues ! ");
+                mysqli_error($database);
+
+            }
+
 
 
         //===== PARCOURS=====//
@@ -144,43 +174,35 @@ and open the template in the editor.
         $parcourstab = mysqli_fetch_array($resu);
         $parcours= $parcourstab[0]+1;
 
-        var_dump(count($tab_ue));
 
        for ($i = 0; $i < count($tab_ue); $i++) {
-            $ue = $tab_ue["$i"]->sigle;
-            $num = intval($tab_ue[$i]->sem_seq);
-            $sem = $tab_ue[$i]->sem_label;
-            $profil = $tab_ue[$i]->profil;
-            $utt = $tab_ue[$i]->utt;
-            $res = $tab_ue[$i]->resultat;
-            $credits=intval($tab_ue[$i]->credit);
-//            if ($res=='F' or $res=="ABS"){
-//                $credits=0;
-//            }
-//            else {
-//                $sql="SELECT credit FROM Ue Where IdUe='$ue'";
-//                $resu = mysqli_query($database, $sql);
-//                $credits = mysqli_fetch_array($resu);
-//
-//            }
+           $ue = $tab_ue["$i"]->sigle;
+           $num = intval($tab_ue[$i]->sem_seq);
+           $sem = $tab_ue[$i]->sem_label;
+           $profil = $tab_ue[$i]->profil;
+           $utt = $tab_ue[$i]->utt;
+           $res = $tab_ue[$i]->resultat;
+           $credits = intval($tab_ue[$i]->credit);
 
 
-            $requete = "INSERT INTO `ElemForm` VALUES ('$IdEtu','$num','$sem','$ue','$utt','$profil','$credits','$res','$parcours')";
-            var_dump($credits);
-echo("</br>");
-var_dump($requete);
-echo("</br>");
-            $resultat = mysqli_query($database, $requete);
-            if ($resultat) {
-                echo("parcours enregistre sur $parcours");
-            } else {
-                echo("erreur");
-                mysqli_error($database);
-            }
+           $requete = "INSERT INTO `ElemForm` VALUES ('$IdEtu','$num','$sem','$ue','$utt','$profil','$credits','$res','$parcours')";
+
+           $resultat = mysqli_query($database, $requete);
+
+           //verif//
+           $verif_parcours = true;
+           if (!$resultat) {
+               $verif_parcours = false;
+
+           }
+       }
+
+        if ($verif_parcours) {
+            echo("parcours enregistre sur $parcours");
+        } else {
+            echo("erreur");
+            mysqli_error($database);
         }
-
-
-
 
 
         //============================VOILA=================================================//
