@@ -159,7 +159,7 @@ function actuel_rgmt($tab)
          Vous n'en avez que $UTTCSTM /60 </li>";
     }
     if ($final == 13) {
-        flash( 'status', '<strong>Profil validé</strong>! Tout va bien, ce parcours respecte les regles','alert alert-success');
+        flash( 'status', '<strong>Profil validé</strong>! Tout va bien, ce parcours respecte les règles actuelles','alert alert-success');
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
         flash( 'status', '<strong>Profil rejeté!</strong><br/><ul>'.$message.'</ul>','alert alert-danger');
