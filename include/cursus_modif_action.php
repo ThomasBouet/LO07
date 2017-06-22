@@ -5,9 +5,9 @@ require_once 'bibliotheque.php';
     print_r($_POST);
     echo("</pre>");*/
 
-$etu = $_POST["etu"];
-$parcours=$_POST["cursus"];
-for ($i = 1; $i < count($_POST["ue"]); $i++) {
+$etu = $match['params']['id'];
+$parcours=$match['params']['cursus'];
+for ($i = 0; $i < count($_POST["ue"]); $i++) {
     $ue = $_POST["ue"][$i];
     $num = $_POST["num"][$i];
     $sem = $_POST["sem_label"][$i];
@@ -24,16 +24,15 @@ for ($i = 1; $i < count($_POST["ue"]); $i++) {
 
     }
 
-
-
-
     $requete = "INSERT INTO `ElemForm` VALUES ('$etu','$num','$sem','$ue','$utt','$profil','$credits[0]','$res','$parcours')";
 
     $resultat = mysqli_query($database, $requete);
     if ($resultat) {
-        echo("parcours enregistre sur $parcours");
+        flash( 'status', '<strong>Modification effectuée</strong>!','alert alert-success');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        echo("erreur");
+        flash( 'status', '<strong>Erreur!</strong>','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         mysqli_error($database);
     }
 }

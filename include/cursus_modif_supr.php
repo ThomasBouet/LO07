@@ -1,10 +1,7 @@
 <?php
-include "database.php";
-$etu = $_POST["etu"];
-$cursus = $_POST["cursus"];
-echo("<pre>");
-print_r($_POST);
-echo("</pre>");
+include_once "database.php";
+$etu = $match['params']['id'];
+$cursus = $match['params']['cursus'];
 $ues=[];
 foreach ($_POST["ue"] as $post){
     $ues[]=$post;
@@ -14,9 +11,12 @@ foreach ($ues as $ue) {
     $sql = "DELETE FROM ElemForm WHERE IdEleve= '$etu' AND IdParcours='$cursus' AND Sigle='$ue'";
     $resultat = mysqli_query($database, $sql);
     if ($resultat) {
-        echo("Ue effacée avec succès !");
+        flash( 'status', '<strong>Success</strong>! UE effacée','alert alert-success');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        echo("non");
+        flash( 'status', '<strong>Erreur!</strong>','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+
         mysqli_error($database);
     }
 }

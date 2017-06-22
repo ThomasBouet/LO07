@@ -72,6 +72,7 @@ foreach ($merged as $uv){
                     </div>
                     <div class="card-block text-center">
                         <div class="btn-group-vertical">
+                            <a href="<?php echo($match['params']['cursus']);?>/edit" class="btn-secondary btn btn-lg">Modifier</a >
                             <a href="<?php echo($match['params']['cursus']);?>/duplicate" class="btn-secondary btn btn-lg">Dupliquer</a >
                             <a href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg">Télécharger</a >
                             <a href="<?php echo($match['params']['cursus']);?>/delete" class="btn-danger btn btn-lg">Supprimer</a >

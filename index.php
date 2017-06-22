@@ -21,6 +21,9 @@ $router->map('GET','/student', '/views/student/list.php', 'student-list');
 $router->map('GET', '/student/[i:id]', '/views/student/show.php','student-show');
 $router->map('GET', '/student/[i:id]/[i:cursus]', '/views/cursus/show.php','cursus-show');
 
+$router->map('GET', '/student/[i:id]/[i:cursus]/edit', '/views/cursus/edit.php','cursus-edit');
+$router->map('POST', '/student/[i:id]/[i:cursus]/edit', '/include/cursus_modif_action.php','cursus-edituv');
+$router->map('POST', '/student/[i:id]/[i:cursus]/edit/del', '/include/cursus_modif_supr.php','cursus-deluv');
 $router->map('GET', '/student/[i:id]/[i:cursus]/duplicate', '/include/cursus_dup.php','cursus-duplicate');
 $router->map('GET', '/student/[i:id]/[i:cursus]/export', '/include/csv_export.php','cursus-export');
 $router->map('GET', '/student/[i:id]/[i:cursus]/delete', '/include/cursus_supr.php','cursus-del');
