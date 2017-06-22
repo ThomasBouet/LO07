@@ -71,12 +71,11 @@ foreach ($merged as $uv){
                         Gestion du cursus
                     </div>
                     <div class="card-block text-center">
-                        <form method="post" action="<?php echo($match['params']['cursus']);?>/delete">
-                            <div class="btn-group-vertical">
-                                <button href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg">Télécharger</button>
-                                <button type="submit" class="btn-danger btn btn-lg">Supprimer</button>
-                            </div>
-                        </form>
+                        <div class="btn-group-vertical">
+                            <a href="<?php echo($match['params']['cursus']);?>/duplicate" class="btn-secondary btn btn-lg">Dupliquer</a >
+                            <a href="<?php echo($match['params']['cursus']);?>/export" class="btn-secondary btn btn-lg">Télécharger</a >
+                            <a href="<?php echo($match['params']['cursus']);?>/delete" class="btn-danger btn btn-lg">Supprimer</a >
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-3">

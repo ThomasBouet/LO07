@@ -1,7 +1,7 @@
 <?php
 include "database.php";
-$etu = $_POST["etu"];
-$cursus = $_POST["cursus"];
+$etu = $match['params']['id'];
+$cursus = $match['params']["cursus"];
 
 
 $sql = "SELECT * FROM ElemForm WHERE IdEleve= '$etu' AND IdParcours='$cursus'";
@@ -13,7 +13,6 @@ while ($row = mysqli_fetch_array($res))
 }
 var_dump($sql);
 echo("<pre>");
-print_r($resultats);
 
 echo("</pre>");
 
@@ -46,9 +45,13 @@ echo("</br>");
 
     $resultat = mysqli_query($database, $requete);
     if ($resultat) {
-        echo("parcours enregistre sur $parcours");
+//        echo("parcours enregistre sur $parcours");
+        flash( 'status', '<strong>Parcours dupliqué</strong> avec success sur le cursus n°'.$parcours,'alert alert-success');
+        header('Location:' . '/student/' . $etu . '/' . $parcours);
     } else {
-        echo("erreur");
+//        echo("erreur");
+        flash( 'status', '<strong>Mince Alors!</strong> Erreur','alert alert-danger');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         mysqli_error($database);
     }
 
