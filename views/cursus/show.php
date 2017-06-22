@@ -4,7 +4,7 @@ session_start();
 require('layout/header.php');
 require_once('include/database.php');
 require_once('include/bibliotheque.php');
-$sql1 = "SELECT DISTINCT sem_seq, sigle,profil,creditobt,resultat FROM ElemForm WHERE IdParcours=".$match['params']['cursus']." ORDER BY sem_seq ASC";
+$sql1 = "SELECT DISTINCT sem_seq, sigle,profil,creditobt,resultat FROM ElemForm WHERE (IdParcours=".$match['params']['cursus']." AND IdEleve=".$match['params']['id'].") ORDER BY sem_seq ASC";
 $res1 = mysqli_query($database, $sql1);
 $todisplay=['CS','CT','EC','HP','ME','TM']; //Cat a display
 $elts = array(); //UV de base
@@ -21,7 +21,6 @@ foreach ($elts as $elt){
     $elt['cat']=$types[0]['cat'];
     $merged[]=$elt;
 }
-
 $nbsemester=-1; //Nb de semestres effectues
 foreach ($merged as $elt){
     $eltval=intval($elt['sem_seq']);
